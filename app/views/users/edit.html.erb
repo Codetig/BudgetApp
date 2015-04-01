@@ -1,0 +1,14 @@
+<div class="after-nav container">
+<h1>Edit Profile</h1>
+
+<p>Edit your profile below</p>
+
+<%= form_for @user do |f| %>
+  <p><%= f.label :first_name, "First Name: " %> <%= f.text_field :first_name %></p>
+  <p><%= f.label :last_name, "Last Name: " %> <%= f.text_field :last_name %></p>
+  <p><%= f.label :birthday, "Birth Date:" %> <%= f.text_field :birthday %></p>
+  <p><%= f.label :cell_num, "Cell Phone#: " %> <%= f.text_field :cell_num %></p>
+  <p><%= f.label :email, "Email: " %> <%= f.text_field :email %></p>
+  <%= f.submit "Update", {class: "btn btn-primary"} %>
+<% end %>
+</div>

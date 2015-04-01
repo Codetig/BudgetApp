@@ -1,0 +1,13 @@
+<div class="after-nav container">
+<h1>Editing <%= @user.first_name %>'s budget</h1>
+<p>Please update the budget attributes below</p>
+
+<%= form_for @budget do |f| %>
+  <p><%= f.label :name, "Name: " %> <%= f.text_field :name %></p>
+  <p>
+  <%= f.label :desc, "Description:" %> <br><%= f.text_area :desc %>
+  </p>
+  <%= f.submit "Update", {class: "btn btn-primary"} %>
+
+<% end %>
+</div>

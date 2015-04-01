@@ -1,0 +1,36 @@
+<div class="after-nav container">
+<h1 class="text-center"><%= @user.fullname %>'s Profile</h1>
+<p class="text-center">Please review you information below and click edit to make changes.</p>
+<br>
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <td>First Name: </td>
+    <td><%= @user.first_name %></td>
+  </tr>
+  <tr>
+    <td>Last Name: </td>
+    <td><%= @user.last_name %></td>
+  </tr>
+  <tr>
+    <td>Birthday: </td>
+    <td><%= @user.birthday %></td>
+  </tr>
+  <tr>
+    <td>Cell Phone: </td>
+    <td><%= @user.cell_num.insert(3,"-").insert(7," ") %></td>
+  </tr>
+  <tr>
+    <td>Email: </td>
+    <td><%= @user.email %></td>
+  </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to "Edit profile deatails", edit_user_path %></td>
+      <td></td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>

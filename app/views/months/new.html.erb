@@ -1,0 +1,17 @@
+<div class="after-nav container">
+<h1>New Month</h1>
+
+<p> Add details for your new month below.</p><small><p>Note: If you have another month with the same date already, you will not be able to add a duplicate.</p></small>
+
+<%= form_for [@budget,Month.new] do |f| %>
+  <p><%= f.label :name, "Name: " %><br> <%= f.text_field :name, placeholder: "make it a fun name..." %></p>
+  <p><%= f.label :month_date, "Date: " %><br> <%= f.text_field :month_date, placeholder: "(YYYY-MM-DD) 1st day of Month" %></p>
+  <p><%= f.label :projected_income, "Projected Month Income: " %><br> <%= f.text_field :projected_income %></p>
+  <p><%= f.label :projected_exp, "Projected Month Expense: " %><br> <%= f.text_field :projected_exp %></p>
+  <p><%= f.label :actual_income, "Actual Month Income: " %><br> <%= f.text_field :actual_income, placeholder: "if already known..." %></p>
+  <p><%= f.label :actual_exp, "Actual Month Income: "  %><br> <%= f.text_field :actual_exp, placeholder: "if already known..." %></p>
+  <%= f.submit "Add Month", class: "btn btn-primary" %>
+
+<% end %>
+
+</div>

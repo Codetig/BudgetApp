@@ -1,0 +1,112 @@
+<div class="after-nav container">
+<h1>Month Budget Details <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
+
+<div class="addcat">
+  <div class="catform">
+  <h4 class="text-right"><a href="#"><span class="close-add glyphicon glyphicon-remove" aria-hidden="true"></span></a></h4>
+    <h2 class="white-text">Add New Category</h2>
+    <%= form_for [@month, Category.new] do |f| %>
+      <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+      <%= f.label :expense, "Expense?", class: "white-text" %> <%= f.check_box :expense %>
+      <%= f.text_area :desc, placeholder: "Category Description", class: "form-control" %>
+      <%= f.text_field :proj_val, placeholder: "Expected month amount", class: "form-control" %><br>
+      <p class="white-text"><a id="show-periods" href="#">Add actual values for periods 1-4?</a></p>
+      <div class="periods">
+      <%= f.text_field :period1, placeholder: "Amount", class: "form-control" %>
+      <%= f.text_field :period2, placeholder: "Amount", class: "form-control" %>
+      <%= f.text_field :period3, placeholder: "Amount", class: "form-control" %>
+      <%= f.text_field :period4, placeholder: "Amount", class: "form-control" %>
+      </div>
+      <%= f.submit "Add Category", class: "btn btn-primary", :disable_with => 'Submiting...' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @income.any? %>
+<h3>Income <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
+<ul>
+<% @income.each do |cat| %>
+    
+    <div class="disp">
+    <li><a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
+        Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
+    
+    <div class="cat-edit-form hidden">
+    <%= form_for cat do |f| %>
+    <div class="form-group form-inline">
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name, class: "form-control"  %> 
+      <%= link_to "Delete", category_path(cat), method: :delete, data: {confirm: "Are you sure you want to delete this category: '#{cat.name}'?"} %> |
+      <a class="show-desc" href="#"><%= f.label :desc, "Description" %></a><br>
+      <%= f.text_area :desc, size: "41x5", class: "desc form-control hidden" %> <br>
+      <%= f.label :proj_val, "Projected Amount This Month:" %>
+      <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <%= f.text_field :proj_val, class: "form-control" %><br>
+      </div>
+      <h5>Actual income for periods:</h5>
+      <div class="input-group actuals">
+      <div class="input-group-addon">1 - $</div>
+      <%= f.text_field :period1, class: "form-control" %>
+      <div class="input-group-addon">2 - $</div>
+      <%= f.text_field :period2, class: "form-control" %>
+      <div class="input-group-addon">3 - $</div>
+      <%= f.text_field :period3, class: "form-control" %>
+      <div class="input-group-addon">4 - $</div>
+      <%= f.text_field :period4, class: "form-control" %>
+      </div>
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+<% end %>
+  </ul>
+<% end %>
+  <hr>
+
+<% if @expenses.any? %>
+<h3>Expenses <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
+<ul>
+<% @expenses.each do |cat| %>
+
+    <div class="disp">
+    <li><a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
+        Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
+    <div class="cat-edit-form hidden">
+    <%= form_for cat do |f| %>
+      <div class="form-group form-inline">
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name, class: "form-control"  %> 
+        <%= link_to "Delete", category_path(cat), method: :delete, data: {confirm: "Are you sure you want to delete this category: '#{cat.name}'?"} %> |
+        <a class="show-desc" href="#"><%= f.label :desc, "Description" %></a><br>
+        <%= f.text_area :desc, size: "41x5", class: "desc form-control hidden" %> <br>
+        <%= f.label :proj_val, "Projected Expenses This Month:" %>
+        <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <%= f.text_field :proj_val, class: "form-control" %><br>
+        </div>
+        <h5>Actual expenses for periods:</h5>
+        <div class="input-group actuals">
+        <div class="input-group-addon">1 - $</div>
+        <%= f.text_field :period1, class: "form-control" %>
+        <div class="input-group-addon">2 - $</div>
+        <%= f.text_field :period2, class: "form-control" %>
+        <div class="input-group-addon">3 - $</div>
+        <%= f.text_field :period3, class: "form-control" %>
+        <div class="input-group-addon">4 - $</div>
+        <%= f.text_field :period4, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    </div>
+
+  <% end %>
+    </ul>
+<% end %>
+<hr>
+
+</div>

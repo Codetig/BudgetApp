@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_one :budget, dependent: :destroy
 
   def fullname
-    "#{@first_name} #{@last_name}"
+    "#{self.first_name} #{self.last_name}"
   end
 
   def gen_budget budgeter

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328060840) do
+ActiveRecord::Schema.define(version: 20150330001433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,15 @@ ActiveRecord::Schema.define(version: 20150328060840) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.boolean  "expense"
-    t.decimal  "projected_value", precision: 10, scale: 2
-    t.decimal  "period1",         precision: 10, scale: 2
-    t.decimal  "week2",           precision: 10, scale: 2
-    t.decimal  "week3",           precision: 10, scale: 2
-    t.decimal  "week4",           precision: 10, scale: 2
+    t.decimal  "proj_val",   precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "period1",    precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "period2",    precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "period3",    precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "period4",    precision: 10, scale: 2, default: 0.0, null: false
     t.text     "desc"
     t.string   "smiley"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.integer  "month_id"
   end
 
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20150328060840) do
     t.date     "birthday"
     t.string   "cell_num"
     t.string   "password"
-    t.string   "password_digest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false
