@@ -42,7 +42,7 @@ class Month < ActiveRecord::Base
 
   def self.make_current_month budget_id
     create(
-      name: Date.today.month,
+      name: Date.today.strftime("%B"),
       month_date: Date.today,
       projected_income: 0,
       projected_exp: 0,

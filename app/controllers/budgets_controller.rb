@@ -2,7 +2,8 @@ class BudgetsController < ApplicationController
   before_action :find_budget, :login_check
 
   def show
-    @months = @budget.months
+    @months = @budget.months.order(month_date: :desc)
+    Month.make_current_month(@budget.id) if @months.empty?
     @months.each do |month|
       month.calc_actuals
       month.calc_projected

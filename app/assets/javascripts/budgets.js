@@ -2,7 +2,7 @@ $(document).ready(function(){
   var cdata; // for Flot chart data
   
   var chartUrl = $('#monSeriesI').attr('data-url');
-  console.log(chartUrl);
+  // console.log(chartUrl);
   //flot
   if(chartUrl){
     $.getJSON(chartUrl, function(data){
