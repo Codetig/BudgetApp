@@ -2,17 +2,27 @@
 <h1><%= @user.first_name %>'s Budget</h1>
 
 <% if @budget.desc && @budget.desc.length > 0 %>
-  <h4>Description:</h4>
-  <p><%= @budget.desc %></p>
-<% end %>
-<p>Below are all the months in <%= @budget.name %>. You may edit the budget <%= link_to "here", edit_budget_path(@budget) %></p>
-<% @months.each do |month| %>
-  <p>
-  <%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
-  <small><%= link_to "Edit", edit_month_path(month) %></small><br>
-  <span>Projected Net: <%= month.projected_income - month.projected_exp %> Actual Net: <%= month.actual_income - month.actual_exp %> </span>
-  </p>
-<% end %>
+      <h4>Description:</h4>
+      <p><%= @budget.desc %></p>
+    <% end %>
+      <p>Below are all the months in <%= @budget.name %>. You may edit the budget <%= link_to "here", edit_budget_path(@budget) %></p>
+
+<div class="row">
+  <div class="col-sm-5">
+    <% @months.each do |month| %>
+      <p>
+      <%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
+      <small><%= link_to "Edit", edit_month_path(month) %></small><br>
+      <span>Projected Net: <%= month.projected_income - month.projected_exp %> Actual Net: <%= month.actual_income - month.actual_exp %> </span>
+      </p> <hr>
+    <% end %>
 
 <%= link_to "Add Month", new_budget_month_path(@budget) %>
+  </div>
+  <div class="col-sm-7">
+    <div id="monSeriesI" data-url="<%= budgetchart_path(@budget) %>"></div>
+    <div id="monSeriesE" data-url="<%= budgetchart_path(@budget) %>"></div>
+  </div>
+</div>
+
 </div>

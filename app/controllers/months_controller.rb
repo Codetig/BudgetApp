@@ -22,6 +22,25 @@ class MonthsController < ApplicationController
   def edit
   end
 
+  def pie_chart
+    categories = @month.categories
+    exp = []
+    income = []
+    unless categories.empty?
+      categories.each do |cat|
+          exp << [cat.name, cat.proj_val] if cat.expense
+          income << [cat.name, cat.proj_val] unless cat.expense
+      end
+      respond_to do |format|
+        format.json {render json: {expense: exp, income: income}}
+      end
+    else
+      respond_to do |format|
+        format.json {render json: nil}
+      end
+    end
+  end
+
   def create
     params[:projected_income] ||= 0
     params[:projected_exp] ||= 0

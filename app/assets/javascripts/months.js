@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   var fdata; //for form data to be sent to server for update
+  
   //category addition section behavior
     // show
   $(".cat-add-link").on('click', function(e){
@@ -49,6 +50,48 @@ $(document).ready(function(){
       error: function(d){alert("value change not allowed, please review your form");}
     }); //end of ajax call
   });
+
+//Pie charts with Flot
+  var pDataI = [],
+  pDataE=[],
+  pUrl = $('#i-pie').attr('data-url'),
+  pcolors = ['blue', 'green', 'red', 'purple', 'white', 'orange', 'black', 'yellow'];
+
+  $.getJSON(pUrl, function(data){
+    if(data){
+      // console.log(data);
+    data.expense.forEach(function(exp, i){
+      pDataE.push({label: exp[0], data: exp[1], color: pcolors[i]});
+    });
+
+    data.income.forEach(function(inc, i){
+      pDataI.push({label: inc[0], data: inc[1], color: pcolors[i]});
+    });
+
+    $.plot($('#i-pie'), pDataI, {
+      series: {
+        pie: {
+          show: true
+        }
+      },
+      legend: {
+        show: false
+      }
+    });
+
+    $.plot($('#e-pie'), pDataE, {
+      series: {
+        pie: {
+          show: true
+        }
+      },
+      legend: {
+        show: false
+      }
+    });
+    }
+  });
+
 
 
 });//end of doc ready

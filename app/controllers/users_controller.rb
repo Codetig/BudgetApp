@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes user_params
+      # testing email begin
+      UserMailer.hello_user(@user).deliver_now
+      # testing email end
       redirect_to @user, notice: "Your user details have been updated"
     else
       redirect_to :back, notice: "Updated failed: Please review form"

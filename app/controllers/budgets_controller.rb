@@ -11,6 +11,21 @@ class BudgetsController < ApplicationController
     # Month.make_current_month(@budget.id) unless exist
   end
 
+  def bar_chart
+    months = @budget.months
+    exp = []
+    income = []
+    months.each do |month|
+      month.calc_actuals
+      month.calc_projected
+      exp << [month.month_date.month.to_i, month.actual_exp.to_i]
+      income << [month.month_date.month.to_i, month.actual_income.to_i]
+    end
+    respond_to do |format|
+        format.json {render :json => {income: income, expense: exp}}
+    end
+  end
+
   def edit
   end
 

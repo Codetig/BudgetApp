@@ -24,7 +24,10 @@
 
 <% if @income.any? %>
 <h3>Income <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
-<ul>
+
+<div class="row">
+  <div class="col-sm-8">
+    <ul>
 <% @income.each do |cat| %>
     
     <div class="disp">
@@ -63,12 +66,20 @@
 
 <% end %>
   </ul>
+  </div>
+  <div class="col-sm-4">
+    <div id="i-pie" data-url="<%= monthchart_path(@month) %>"></div>
+  </div>
+</div>
 <% end %>
   <hr>
 
 <% if @expenses.any? %>
 <h3>Expenses <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
-<ul>
+
+<div class="row">
+  <div class="col-sm-8">
+    <ul>
 <% @expenses.each do |cat| %>
 
     <div class="disp">
@@ -106,6 +117,11 @@
 
   <% end %>
     </ul>
+  </div>
+  <div class="col-sm-4">
+    <div id="e-pie" data-url="<%= monthchart_path(@month) %>"></div>
+  </div>
+</div>
 <% end %>
 <hr>
 
