@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'pry-rails'
 gem 'devise'
 gem 'rails_12factor'
+gem 'figaro'
 ruby '2.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
