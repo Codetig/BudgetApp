@@ -51,5 +51,6 @@ class BudgetsController < ApplicationController
 
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    redirect_to root_path, notice: "Permission Denied" if current_user.id != Budget.find(params[:id]).user.id
   end
 end

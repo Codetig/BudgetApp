@@ -51,5 +51,6 @@ class CategoriesController < ApplicationController
 
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    redirect_to root_path, notice: "Permission Denied" if current_user.budget.id != Category.find(params[:id]).month.budget.id
   end
 end

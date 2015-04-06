@@ -84,6 +84,7 @@ class MonthsController < ApplicationController
   end
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    redirect_to root_path, notice: "Permission Denied" if current_user.id != Month.find(params[:id]).budget.user.id
   end
 
   def find_month
