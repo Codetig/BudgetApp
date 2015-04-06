@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root 'sites#home'
 
+  devise_for :users
   get 'sites/home', to: 'sites#signout'
   get '/budgets/:id/barchart', to: 'budgets#bar_chart', as: "budgetchart"
   get '/months/:id/piechart', to: 'months#pie_chart', as: "monthchart"
-
-  devise_for :users
 
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     # get '/profile', on: :member, to: 'users#show'
