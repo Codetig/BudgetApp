@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1>Month Budget Details <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
+<h1>Month "<%= @month.name %>" Details <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
 
 <div class="addcat">
   <div class="catform">
@@ -9,13 +9,13 @@
       <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
       <%= f.label :expense, "Expense?", class: "white-text" %> <%= f.check_box :expense %>
       <%= f.text_area :desc, placeholder: "Category Description", class: "form-control" %>
-      <%= f.text_field :proj_val, placeholder: "Expected month amount", class: "form-control" %><br>
+      <%= f.number_field :proj_val, placeholder: "Expected month amount", class: "form-control" %><br>
       <p class="white-text"><a id="show-periods" href="#">Add actual values for periods 1-4?</a></p>
       <div class="periods">
-      <%= f.text_field :period1, placeholder: "Amount", class: "form-control" %>
-      <%= f.text_field :period2, placeholder: "Amount", class: "form-control" %>
-      <%= f.text_field :period3, placeholder: "Amount", class: "form-control" %>
-      <%= f.text_field :period4, placeholder: "Amount", class: "form-control" %>
+      <%= f.number_field :period1, placeholder: "Amount", class: "form-control" %>
+      <%= f.number_field :period2, placeholder: "Amount", class: "form-control" %>
+      <%= f.number_field :period3, placeholder: "Amount", class: "form-control" %>
+      <%= f.number_field :period4, placeholder: "Amount", class: "form-control" %>
       </div>
       <%= f.submit "Add Category", class: "btn btn-primary", :disable_with => 'Submiting...' %>
     <% end %>
@@ -46,18 +46,18 @@
       <%= f.label :proj_val, "Projected Amount This Month:" %>
       <div class="input-group">
       <div class="input-group-addon">$</div>
-      <%= f.text_field :proj_val, class: "form-control" %><br>
+      <%= f.number_field :proj_val, class: "form-control" %><br>
       </div>
       <h5>Actual income for periods:</h5>
       <div class="input-group actuals">
       <div class="input-group-addon">1 - $</div>
-      <%= f.text_field :period1, class: "form-control" %>
+      <%= f.number_field :period1, class: "form-control" %>
       <div class="input-group-addon">2 - $</div>
-      <%= f.text_field :period2, class: "form-control" %>
+      <%= f.number_field :period2, class: "form-control" %>
       <div class="input-group-addon">3 - $</div>
-      <%= f.text_field :period3, class: "form-control" %>
+      <%= f.number_field :period3, class: "form-control" %>
       <div class="input-group-addon">4 - $</div>
-      <%= f.text_field :period4, class: "form-control" %>
+      <%= f.number_field :period4, class: "form-control" %>
       </div>
     </div>
     <% end %>
@@ -97,18 +97,18 @@
         <%= f.label :proj_val, "Projected Expenses This Month:" %>
         <div class="input-group">
         <div class="input-group-addon">$</div>
-        <%= f.text_field :proj_val, class: "form-control" %><br>
+        <%= f.number_field :proj_val, class: "form-control" %><br>
         </div>
         <h5>Actual expenses for periods:</h5>
         <div class="input-group actuals">
         <div class="input-group-addon">1 - $</div>
-        <%= f.text_field :period1, class: "form-control" %>
+        <%= f.number_field :period1, class: "form-control" %>
         <div class="input-group-addon">2 - $</div>
-        <%= f.text_field :period2, class: "form-control" %>
+        <%= f.number_field :period2, class: "form-control" %>
         <div class="input-group-addon">3 - $</div>
-        <%= f.text_field :period3, class: "form-control" %>
+        <%= f.number_field :period3, class: "form-control" %>
         <div class="input-group-addon">4 - $</div>
-        <%= f.text_field :period4, class: "form-control" %>
+        <%= f.number_field :period4, class: "form-control" %>
         </div>
       </div>
     <% end %>

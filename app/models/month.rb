@@ -15,6 +15,7 @@ class Month < ActiveRecord::Base
       self.actual_exp += cat.actuals if cat.expense
       self.actual_income += cat.actuals unless cat.expense
     end
+    self.save
   end
 
   def calc_projected
@@ -25,6 +26,7 @@ class Month < ActiveRecord::Base
       self.projected_exp += cat.proj_val if cat.expense
       self.projected_income += cat.proj_val unless cat.expense
     end
+    self.save
   end
 
   def current_month?

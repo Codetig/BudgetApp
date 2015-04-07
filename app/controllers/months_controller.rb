@@ -42,11 +42,12 @@ class MonthsController < ApplicationController
   end
 
   def create
-    params[:projected_income] ||= 0
-    params[:projected_exp] ||= 0
-    params[:actual_income] ||= 0
-    params[:actual_exp] ||= 0
     month = Month.new month_params
+    month.projected_income ||= 0
+    month.projected_exp ||= 0
+    month.actual_income ||= 0
+    month.actual_exp ||= 0
+    
     if !month.month_exists? && month.save
       month.budget = current_user.budget
       month.save

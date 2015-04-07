@@ -5,9 +5,9 @@
 
 <%= form_for [@budget,Month.new] do |f| %>
   <p><%= f.label :name, "Name: " %><br> <%= f.text_field :name, placeholder: "make it a fun name..." %></p>
-  <p><%= f.label :month_date, "Date: " %><br> <%= f.text_field :month_date, placeholder: "(YYYY-MM-DD) 1st day of Month" %></p>
-  <p><%= f.label :projected_income, "Projected Month Income: " %><br> <%= f.text_field :projected_income %></p>
-  <p><%= f.label :projected_exp, "Projected Month Expense: " %><br> <%= f.text_field :projected_exp %></p>
+  <p><%= f.label :month_date, "Date: " %><br> <%= f.date_field :month_date, placeholder: "(M/D/YYYY) 1st day of Month" %></p>
+  <p><%= f.label :projected_income, "Projected Month Income: " %><br> <%= f.number_field :projected_income %></p>
+  <p><%= f.label :projected_exp, "Projected Month Expense: " %><br> <%= f.number_field :projected_exp %></p>
   <%= f.submit "Add Month", class: "btn btn-primary" %>
 
 <% end %>

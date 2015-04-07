@@ -1,13 +1,13 @@
 <div class="after-nav container">
 <h1>Edit Month</h1>
 
-<p> Update details for your <%= @month.name %> below.</p><small><p>Note: If you have another month with the same date already, you will not be able to add a duplicate.</p></small>
+<p> Update details for your <%= @month.name %> below.</p><small><p>Note: If you have another month with the same date already, you will not be able to add a duplicate.</p><p>Your month's amounts are auto populated by the categories they have.</p></small>
 
 <%= form_for @month do |f| %>
   <p><%= f.label :name, "Name: " %><br> <%= f.text_field :name %> </p>
-  <p><%= f.label :month_date, "Date: " %> <br> <%= f.text_field :month_date %></p>
-  <p><%= f.label :projected_income, "Projected Month Income: " %> <br> <%= f.text_field :projected_income %></p>
-  <p><%= f.label :projected_exp, "Projected Month Expense: " %> <br> <%= f.text_field :projected_exp %></p>
+  <p><%= f.label :month_date, "Date: " %> <br> <%= f.date_field :month_date %></p>
+  <p><%= f.label :projected_income, "Projected Month Income: " %> <br> <%= f.number_field :projected_income, disabled: true %></p>
+  <p><%= f.label :projected_exp, "Projected Month Expense: " %> <br> <%= f.number_field :projected_exp, disabled: true %></p>
   <%= f.submit "Update", class: "btn btn-primary" %>
 
 <% end %>
