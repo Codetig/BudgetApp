@@ -1,9 +1,11 @@
 class BudgetsController < ApplicationController
   before_action :find_budget, :login_check
+  before_action :permission_check, except: :create
 
   def show
     @months = @budget.months.order(month_date: :desc)
     Month.make_current_month(@budget.id) if @months.empty?
+    # UserMailer.hello_user(@budget.user).deliver #works!!!
     @months.each do |month|
       month.calc_actuals
       month.calc_projected
@@ -51,6 +53,9 @@ class BudgetsController < ApplicationController
 
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    
+  end
+  def permission_check
     redirect_to root_path, notice: "Permission Denied" if current_user.id != Budget.find(params[:id]).user.id
   end
 end

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :login_check
+  before_action :permission_check, except: :create
 
   def index
   end
@@ -51,6 +52,11 @@ class CategoriesController < ApplicationController
 
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    
+  end
+
+  def permission_check
     redirect_to root_path, notice: "Permission Denied" if current_user.budget.id != Category.find(params[:id]).month.budget.id
   end
+
 end

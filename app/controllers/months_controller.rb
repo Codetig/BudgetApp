@@ -1,6 +1,6 @@
 class MonthsController < ApplicationController
-  before_action :login_check, :find_month, except: [:new, :create]
-
+  before_action :login_check
+  before_action :permission_check, :find_month, except: [:new, :create]
   def new
     @budget = Budget.find params[:budget_id]
   end
@@ -84,6 +84,10 @@ class MonthsController < ApplicationController
   end
   def login_check
     redirect_to new_user_session_path, notice: "Please sign in" unless current_user
+    
+  end
+
+  def permission_check
     redirect_to root_path, notice: "Permission Denied" if current_user.id != Month.find(params[:id]).budget.user.id
   end
 
