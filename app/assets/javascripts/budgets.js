@@ -1,25 +1,24 @@
 $(document).ready(function(){
   var cdata; // for Flot chart data
   
-  var chartUrl = $('#monSeriesI').attr('data-url');
+  var chartUrl = $('#mon-bar').attr('data-url');
   // console.log(chartUrl);
   //flot
   if(chartUrl){
     $.getJSON(chartUrl, function(data){
       var month_array = [[1.5, "Jan"], [2.5, "Feb"], [3.5, "Mar"], [4.5, "Apr"], [5.5,"May"], [6.5, "Jun"], [7.5, "Jul"], [8.5, "Aug"], [9.5, "Sep"], [10.5, "Oct"], [11.5, "Nov"], [12.5, "Dec"]];
-      $.plot($("#monSeriesE"), [data.expense], {
-        xaxis: {ticks: month_array},
-        series: {
-          color: 'red',
-          label: 'Actual Expenses by Month',
-          bars: {show: true}
-        }
-      });
+      // $.plot($("#monSeriesE"), [data.expense], {
+      //   xaxis: {ticks: month_array},
+      //   series: {
+      //     color: 'red',
+      //     label: 'Actual Expenses by Month',
+      //     bars: {show: true}
+      //   }
+      // }); // can make a function that compares actuals, prejecteds and projected vs actual income and expense
 
-      $.plot($("#monSeriesI"), [data.income], {
+      $.plot($("#mon-bar"), [{label: "Actual Income", data: data.income, color: "green"}, {label: "Actual Expense", data: data.expense, color: "red"}], {
           series: {
             bars: {show: true},
-            color: 'green',
             label: "Actual Income by Month"
           },
           xaxis: {ticks: month_array}

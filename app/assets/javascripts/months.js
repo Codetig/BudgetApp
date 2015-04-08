@@ -8,7 +8,7 @@ $(document).ready(function(){
     // console.log("in the listener");
     e.preventDefault();
     $(".addcat").show();
-    $('.periods').hide();
+    $('.periods').toggle();
   });
 
    $('.show-cat-edit').on('click', function(e){
@@ -18,8 +18,9 @@ $(document).ready(function(){
   });
 
   $('#show-periods').on('click', function(e){
+    // console.log("show periods");
     e.preventDefault();
-    $('.periods').toggle();
+    $('.catform > .periods').toggle();
   });
 
     //hide
