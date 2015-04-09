@@ -6,21 +6,25 @@ $(document).ready(function(){
     // show
   $(".cat-add-link").on('click', function(e){
     // console.log("in the listener");
-    e.preventDefault();
     $(".addcat").show();
-    $('.periods').toggle();
+    $('.periods').hide();
+    // console.log($(this).parents('h3').text());
+    //For some reason the visual does not keep up with this change.
+    var expBool = $(this).parents('h3').text() === "Income "? false : true;
+    $('#category_expense').attr('checked', expBool);
+    // console.log($('#category_expense').attr('checked'));
   });
 
    $('.show-cat-edit').on('click', function(e){
     // console.log("in show cat edit listener");
     e.preventDefault();
-    $(this).parents('.disp').children('.cat-edit-form').toggleClass('.hidden');
+    $(this).parents('.disp').children('.cat-edit-form').toggleClass('hidden');
   });
 
   $('#show-periods').on('click', function(e){
     // console.log("show periods");
     e.preventDefault();
-    $('.catform > .periods').toggle();
+    $('.periods').toggle();
   });
 
     //hide
@@ -34,7 +38,7 @@ $(document).ready(function(){
     //showing and hiding description
   $('.show-desc').on('click', function(e){
     e.preventDefault();
-    $(this).parent().find('.desc').toggleClass('.hidden');
+    $(this).parent().find('.desc').toggleClass('hidden');
   });
 
 

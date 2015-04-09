@@ -1,13 +1,16 @@
 <div class="after-nav container">
-<div class="jumbotron text-center">
+<div class="jumbotron text-center"> <br> <br>
+<div id="intro" class="container fluid">
 <h1>Welcome to <br>
 <span class="sitename">Mon!</span></h1>
+<br> 
 <div><%= image_tag "sad.png" %> <%= image_tag "neut.png" %> <%= image_tag "happy.png" %></div>
 
 <p>Experience an active and expressive budget</p>
-<h2><%= link_to "Sign Up", new_user_registration_path %></h2>
+<h2><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %></h2> <br>
 </div>
 </div>
+</div><br>
 <div class="container">
   <article id="budget"><br> <br>
   <h2>Do You Budget?</h2>
@@ -27,7 +30,7 @@
   <p>Once you sign up and sign in, you have an empty budget created for you. You can customize it, give it a fun name perhaps. Also the current month is for you with two default categories that you can edit according to your preferences. Your month is divided into two sections, income (at the top) and expenses (at the bottom). You can also add as many categories as you like to the two sections by clicking on the '+' sign. As you fill out your categories you will see values on page change to reflect your change.</p>
   <p>To get you involved, there are four periods to keep track of your actual income or spending as the month progresses. MonMon! will email you periodically, typically on Sunday's to remind you it is time to update your budget. This exercise is intended to get you actively involved in managing your budget and seeing how well you are doing in your monthly budget.</p>
 
-  <p>If there are features you would like to see added, please contact our team at iwant@monmon.com</p>
+  <p>If there are features you would like to see added, please contact our team at iwant@mon.com</p>
   </article>
 </div>
 <div class="container">
