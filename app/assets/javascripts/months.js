@@ -34,7 +34,7 @@ $(document).ready(function(){
     //showing and hiding description
   $('.show-desc').on('click', function(e){
     e.preventDefault();
-    $(this).parent().find('.desc').toggleClass('hidden');
+    $(this).parent().find('.desc').toggleClass('.hidden');
   });
 
 
@@ -48,6 +48,7 @@ $(document).ready(function(){
       dataType: "json",
       data: fdata,
       success: function(d){ 
+        // pForm.parents('.disp').find('li > img').remove(); //causes multiple confirm bug
         pForm.parents('.disp').find('li > .show-cat-edit').text(d.name);
         pForm.parents('.disp').find('li > .pval').text(d.proj_val);
         pForm.parents('.disp').find('li > .amt').text("" + (parseFloat(d.period1) + parseFloat(d.period2) + parseFloat(d.period3) + parseFloat(d.period4)));

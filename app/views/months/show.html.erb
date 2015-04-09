@@ -29,9 +29,13 @@
   <div class="col-sm-8">
     <ul>
 <% @income.each do |cat| %>
-    
+    <% emo_val = (cat.proj_val - (cat.period1 + cat.period2 + cat.period3 + cat.period4)) %>
+    <% emoji = "neut.png" %>
+    <% emoji = "happy.png" if emo_val < 0 %>
+    <% emoji = "sad.png" if emo_val > 0 %>
+
     <div class="disp">
-    <li><a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
+    <li><%= image_tag emoji %> <a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
         Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
     
@@ -82,8 +86,13 @@
     <ul>
 <% @expenses.each do |cat| %>
 
+    <% emo_val = cat.proj_val - (cat.period1 + cat.period2 + cat.period3 + cat.period4) %>
+    <% emoji = "neut.png" %>
+    <% emoji = "happy.png" if emo_val > 0 %>
+    <%emoji = "sad.png" if emo_val < 0 %>
+
     <div class="disp">
-    <li><a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
+    <li><%= image_tag emoji %> <a class="show-cat-edit" href="#"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
         Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
     <div class="cat-edit-form hidden">

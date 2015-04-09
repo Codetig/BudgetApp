@@ -10,10 +10,10 @@
 <div class="row">
   <div class="col-sm-5">
     <% @months.each do |month| %>
-      <p>
-      <%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
-      <small><%= link_to "Edit", edit_month_path(month) %></small><br>
-      <span>Projected Net: <%= month.projected_income - month.projected_exp %> Actual Net: <%= month.actual_income - month.actual_exp %> </span>
+      
+      <h3><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
+      <small><%= link_to "Edit", edit_month_path(month) %></small></h3>
+      <p>Projected Net: <span>$<%= month.projected_income - month.projected_exp %></span> Actual Net: <span>$<%= month.actual_income - month.actual_exp %> </span>
       </p> <hr>
     <% end %>
 
