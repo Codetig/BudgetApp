@@ -93,6 +93,34 @@ footer {
   font-family: 'Dancing Script', cursive;
 }
 
+.signup {
+  background-color: rgba(250,200,200, 0.3);
+}
+
+#login-text {
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  width: 20rem;
+  height: 100%;
+  background-color: rgba(255,255,255, 0.7);
+}
+
+.login {
+  background-image: url('/assets/purse.png');
+  height: 100%;
+}
+
+.picdiv{
+  margin: 0;
+  padding-right: 0;
+}
+
+.coins {
+  width: 30rem;
+  height: 35rem;
+  float: right;
+}
+
 /*Budgets in budgets.scss*/
 
 
