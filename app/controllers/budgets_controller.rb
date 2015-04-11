@@ -5,7 +5,8 @@ class BudgetsController < ApplicationController
   def show
     @months = @budget.months.order(month_date: :desc)
     Month.make_current_month(@budget.id) if @months.empty?
-    # UserMailer.hello_user(@budget.user).deliver #works!!!
+    UserMailer.hello_user(@budget.user).deliver_now #works!!!
+    # UserMailer.update_actuals.deliver_now #works!!!
     @months.each do |month|
       month.calc_actuals
       month.calc_projected
