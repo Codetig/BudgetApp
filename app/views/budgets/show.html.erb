@@ -1,14 +1,14 @@
 <div class="after-nav container">
-<h1><%= @user.first_name %>'s Budget</h1>
+<h1><%= @user.first_name %>'s Budget <small><%= link_to "Edit", edit_budget_path(@budget) %></small></h1>
 
 <% if @budget.desc && @budget.desc.length > 0 %>
       <h4>Description:</h4>
       <p><%= @budget.desc %></p>
     <% end %>
-      <p>Below are all the months in <%= @budget.name %>. You may edit the budget <%= link_to "here", edit_budget_path(@budget) %></p>
+      <p>Below are all the months in <%= @budget.name %>. Feel free to check out the different chart options  below the graph.</p>
 
 <div class="row">
-  <div class="col-sm-5">
+  <div class="col-sm-6">
     <% @months.each do |month| %>
       
       <h3><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
@@ -19,9 +19,16 @@
 
 <%= link_to "Add Month", new_budget_month_path(@budget) %>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-offset-1 col-sm-5 container-fluid">
+    <h4 class="chart-title text-center"></h4> <br>
     <div id="mon-bar" data-url="<%= budgetchart_path(@budget) %>"></div>
-    <div id="monSeriesE" data-url="<%= budgetchart_path(@budget) %>"></div>
+    <hr>
+    <div id="chart-btn">
+      <button class="btn btn-default btn-block">Actual Income Vs Actual Expense</button>
+      <button class="btn btn-default btn-block">Projected Income Vs Projected Expense</button>
+      <button class="btn btn-default btn-block">Projected Income Vs Actual Income</button>
+      <button class="btn btn-default btn-block">Projected Expense Vs Actual Expense</button>
+    </div>
   </div>
 </div>
 

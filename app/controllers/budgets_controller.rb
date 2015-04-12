@@ -17,16 +17,20 @@ class BudgetsController < ApplicationController
 
   def bar_chart
     months = @budget.months
-    exp = []
-    income = []
+    expa = []
+    inca = []
+    expp = []
+    incp = []
     months.each do |month|
       month.calc_actuals
       month.calc_projected
-      exp << [month.month_date.month.to_i, month.actual_exp.to_i]
-      income << [month.month_date.month.to_i, month.actual_income.to_i]
+      expa << [month.month_date.month.to_i, month.actual_exp.to_i]
+      inca << [month.month_date.month.to_i, month.actual_income.to_i]
+      expp << [month.month_date.month.to_i, month.projected_exp.to_i]
+      incp << [month.month_date.month.to_i, month.projected_income.to_i]
     end
     respond_to do |format|
-        format.json {render :json => {income: income, expense: exp}}
+        format.json {render :json => {incomep: incp, expensep: expp, incomea: inca, expensea: expa}}
     end
   end
 
