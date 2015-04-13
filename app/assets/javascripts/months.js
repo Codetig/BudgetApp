@@ -18,6 +18,7 @@ $(document).ready(function(){
    $('.show-cat-edit').on('click', function(e){
     // console.log("in show cat edit listener");
     e.preventDefault();
+    $('.disp').find('li').children().removeClass('bg-success');
     $(this).parents('.disp').children('.cat-edit-form').toggleClass('hidden');
   });
 
@@ -44,8 +45,17 @@ $(document).ready(function(){
 
   $('.disp input').on('change', function(e){
     var pForm = $(this).parents('form'); //for refencing the form the change occurred
+    var hl = [
+    pForm.parents('.disp').find('li > .show-cat-edit').text(),
+    pForm.parents('.disp').find('li > .pval').text(),
+    pForm.parents('.disp').find('li > .amt').text(),
+    ''
+    ];
     fdata = pForm.serializeArray();
+    console.log($(this).attr('id'));
     var url = pForm.attr('action');
+    pForm.parents('.disp').find('li').children().removeClass('bg-success');
+
     $.ajax({
       url: url,
       type: "PUT",
@@ -56,6 +66,8 @@ $(document).ready(function(){
         pForm.parents('.disp').find('li > .show-cat-edit').text(d.name);
         pForm.parents('.disp').find('li > .pval').text(d.proj_val);
         pForm.parents('.disp').find('li > .amt').text("" + (parseFloat(d.period1) + parseFloat(d.period2) + parseFloat(d.period3) + parseFloat(d.period4)));
+        hl[3] = d.name != hl[0]? pForm.parents('.disp').find('li > .show-cat-edit') : d.proj_val != hl[1]? pForm.parents('.disp').find('li > .pval') : pForm.parents('.disp').find('li > .amt');
+        hl[3].addClass('bg-success');
         drawPie();
       },
       error: function(d){alert("value change not allowed, please review your form");}

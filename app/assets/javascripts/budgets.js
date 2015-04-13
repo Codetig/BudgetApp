@@ -7,7 +7,7 @@ $(document).ready(function(){
   if(chartUrl){
     $.getJSON(chartUrl, function(data){
       cdata = data;
-      console.log(cdata);
+      // console.log(cdata);
       var plotData = [
       {label: "Actual Income", data: cdata.incomea, color: "green"},
       {label: "Actual Expense", data: cdata.expensea, color: "red"}
@@ -46,7 +46,7 @@ $(document).ready(function(){
       btitle = 'Projected Income Vs Actual Income';
       plotData = [
       {label: "Projected Income", data: cdata.incomep, color: "blue"},
-      {label: "Actual Income", data: cdata.incomea, color: "yellow"}
+      {label: "Actual Income", data: cdata.incomea, color: "green"}
       ];
       
     } else if(btext === 'Projected Expense Vs Actual Expense'){

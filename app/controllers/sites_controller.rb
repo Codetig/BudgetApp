@@ -7,7 +7,7 @@ class SitesController < ApplicationController
   private
   def login_check
     if current_user
-      Budget.create(name:"#{current_user.first_name}'s Budget", user_id: current_user.id) unless current_user.budget
+      current_user.gen_budget unless current_user.budget
       redirect_to current_user.budget || root_path
     end
   end

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes user_params
       # testing email begin
-      UserMailer.hello_user(@user).deliver_now
+      # UserMailer.hello_user(@user).deliver_now
       # testing email end
       redirect_to @user, notice: "Your user details have been updated"
     else
