@@ -17,6 +17,6 @@ class User < ActiveRecord::Base
   def gen_budget
     return nil if self.budget
     Budget.create(name:"#{self.first_name}'s Budget", desc:"Your very own budget", user_id: self.id)
-    # UserMailer.hello_user(self).deliver_now
+    UserMailer.hello_user(self).deliver_now
   end
 end
