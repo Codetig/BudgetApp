@@ -23,7 +23,7 @@ class MonthsController < ApplicationController
   end
 
   def pie_chart
-    categories = @month.categories
+    categories = @month.categories.order(:id)
     exp = []
     income = []
     unless categories.empty?

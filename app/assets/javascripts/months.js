@@ -63,11 +63,20 @@ $(document).ready(function(){
       data: fdata,
       success: function(d){ 
         // pForm.parents('.disp').find('li > img').remove(); //causes multiple confirm bug
+        var actSum = (parseFloat(d.period1) + parseFloat(d.period2) + parseFloat(d.period3) + parseFloat(d.period4));
+        var emoji = function(category){
+          if(d.expense){
+            return category.proj_val > actSum ? '/assets/happy.png' : category.proj_val < actSum ? '/assets/sad.png' : '/assets/neut.png';
+          } else {
+            return category.proj_val > actSum ? '/assets/sad.png' : category.proj_val < actSum ? '/assets/happy.png' : '/assets/neut.png';
+          }
+        };
         pForm.parents('.disp').find('li > .show-cat-edit').text(d.name);
         pForm.parents('.disp').find('li > .pval').text(d.proj_val);
-        pForm.parents('.disp').find('li > .amt').text("" + (parseFloat(d.period1) + parseFloat(d.period2) + parseFloat(d.period3) + parseFloat(d.period4)));
+        pForm.parents('.disp').find('li > .amt').text("" + actSum);
         hl[3] = d.name != hl[0]? pForm.parents('.disp').find('li > .show-cat-edit') : d.proj_val != hl[1]? pForm.parents('.disp').find('li > .pval') : pForm.parents('.disp').find('li > .amt');
         hl[3].addClass('bg-success');
+        pForm.parents('.disp').find('li > img').attr('src', emoji(d));
         drawPie();
       },
       error: function(d){alert("value change not allowed, please review your form");}
@@ -81,13 +90,14 @@ $(document).ready(function(){
     var pDataI = [],
     pDataE=[],
     pUrl = $('#i-pie').attr('data-url'),
-    pcolors = ['blue', 'green', 'red', 'purple', 'white', 'orange', 'black', 'yellow'];
+    pcolors = ['blue', 'green', 'red', 'purple', 'brown', 'green', 'black', 'yellow'];
 
     $.getJSON(pUrl, function(data){
       if(data){
         // console.log(data);
       data.expense.forEach(function(exp, i){
         pDataE.push({label: exp[0], data: exp[1], color: pcolors[i]});
+        // console.log(pcolors[i]);
       });
 
       data.income.forEach(function(inc, i){
