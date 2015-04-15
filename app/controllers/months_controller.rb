@@ -6,7 +6,7 @@ class MonthsController < ApplicationController
   end
 
   def show
-    @categories = @month.categories
+    @categories = @month.categories.order(:id)
     Category.make_defaults(@month) if @categories.empty?
     @expenses = []
     @income = []

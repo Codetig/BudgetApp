@@ -37,6 +37,14 @@ $(document).ready(function(){
 
   //Page behavior
     //showing and hiding description
+
+  $('body').on('click', '.dummy', function(e){
+    e.preventDefault();
+    $(this).removeClass('btn-primary');
+    $(this).addClass('btn-success');
+
+  });
+
   $('.show-desc').on('click', function(e){
     e.preventDefault();
     $(this).parent().find('.desc').toggleClass('hidden');
@@ -54,6 +62,8 @@ $(document).ready(function(){
     fdata = pForm.serializeArray();
     console.log($(this).attr('id'));
     var url = pForm.attr('action');
+    $('.dummy').removeClass('btn-success');
+    $('.dummy').addClass('btn-primary');
     pForm.parents('.disp').find('li').children().removeClass('bg-success');
 
     $.ajax({
