@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1>Month "<%= @month.name %>" Details <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
+<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
 
 <div class="addcat">
   <div class="catform">
@@ -21,9 +21,9 @@
     <% end %>
   </div>
 </div>
-
+<p><a href="#" class="cat-add-link">Add New Category</a></p>
 <% if @income.any? %>
-<h3>Income <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
+<h3>Income</h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -36,9 +36,9 @@
 
     <div class="disp">
     <!-- how to correctly ref images <img src="/assets/sad.png" alt="sad"> -->
-    <li><%= image_tag emoji %> <a class="show-cat-edit tgreen" style="color:green" href="#"><%= cat.name.capitalize %></a> -
+    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:green" href="#"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
     
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
@@ -53,16 +53,20 @@
       <div class="input-group-addon">$</div>
       <%= f.number_field :proj_val, class: "form-control" %><br>
       </div>
-      <h5>Actual income for periods:</h5>
-      <div class="input-group actuals">
-      <div class="input-group-addon">1 - $</div>
-      <%= f.number_field :period1, class: "form-control" %>
-      <div class="input-group-addon">2 - $</div>
-      <%= f.number_field :period2, class: "form-control" %>
-      <div class="input-group-addon">3 - $</div>
-      <%= f.number_field :period3, class: "form-control" %>
-      <div class="input-group-addon">4 - $</div>
-      <%= f.number_field :period4, class: "form-control" %>
+      <h5>Actual income for periods (week):</h5>
+      <div class="actuals">
+        <div class="input-group">
+        <div class="input-group-addon">1 - $</div>
+        <%= f.number_field :period1, class: "form-control" %>
+        <div class="input-group-addon">3 - $</div>
+        <%= f.number_field :period3, class: "form-control" %>
+        </div>
+        <div class="input-group">
+        <div class="input-group-addon">2 - $</div>
+        <%= f.number_field :period2, class: "form-control" %>
+        <div class="input-group-addon">4 - $</div>
+        <%= f.number_field :period4, class: "form-control" %>
+        </div>
       </div>
     </div>
     <% end %>
@@ -73,6 +77,7 @@
   </ul>
   </div>
   <div class="col-sm-4">
+  <h4>Projected Income Categories</h4>
     <div id="i-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>
 </div>
@@ -80,7 +85,7 @@
   <hr>
 
 <% if @expenses.any? %>
-<h3>Expenses <a href="#"><span class="glyphicon glyphicon-plus cat-add-link" aria-hidden="true"></span></a></h3><br>
+<h3>Expenses </h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -95,7 +100,7 @@
     <div class="disp">
     <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:red" href="#"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
       <div class="form-group form-inline">
@@ -109,16 +114,20 @@
         <div class="input-group-addon">$</div>
         <%= f.number_field :proj_val, class: "form-control" %><br>
         </div>
-        <h5>Actual expenses for periods:</h5>
-        <div class="input-group actuals">
-        <div class="input-group-addon">1 - $</div>
-        <%= f.number_field :period1, class: "form-control" %>
-        <div class="input-group-addon">2 - $</div>
-        <%= f.number_field :period2, class: "form-control" %>
-        <div class="input-group-addon">3 - $</div>
-        <%= f.number_field :period3, class: "form-control" %>
-        <div class="input-group-addon">4 - $</div>
-        <%= f.number_field :period4, class: "form-control" %>
+        <h5>Actual expenses for periods (week):</h5>
+        <div class="actuals">
+          <div class="input-group">
+          <div class="input-group-addon">1 - $</div>
+          <%= f.number_field :period1, class: "form-control" %>
+          <div class="input-group-addon">3 - $</div>
+          <%= f.number_field :period3, class: "form-control" %>
+          </div>
+          <div class="input-group">
+          <div class="input-group-addon">2 - $</div>
+          <%= f.number_field :period2, class: "form-control" %>
+          <div class="input-group-addon">4 - $</div>
+          <%= f.number_field :period4, class: "form-control" %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -129,6 +138,7 @@
     </ul>
   </div>
   <div class="col-sm-4">
+  <h4>Projected Expense Categories</h4>
     <div id="e-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>
 </div>

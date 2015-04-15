@@ -4,6 +4,7 @@
   <title>Budgetapp</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
   
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -38,7 +39,7 @@
     <ul class="nav navbar-nav">
       <li><%= link_to "Profile", user_path(current_user) %></li>
       <li><%= link_to "Months", budget_path(current_user.budget) %></li>
-      <li><%= link_to "Root", root_path %></li>
+      <li class="hidden"><%= link_to "Root", root_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>

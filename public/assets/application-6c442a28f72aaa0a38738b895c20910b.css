@@ -3,6 +3,11 @@
   width: 20rem;
   height: 16rem;
 }
+
+/* line 15, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/budgets.scss */
+.pval, .amt {
+  font-size: 1rem;
+}
 /* line 6, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/months.scss */
 .addcat {
   background-color: rgba(0, 0, 0, 0.8);

@@ -74,7 +74,7 @@ $(document).ready(function(){
         pForm.parents('.disp').find('li > .show-cat-edit').text(d.name);
         pForm.parents('.disp').find('li > .pval').text(d.proj_val);
         pForm.parents('.disp').find('li > .amt').text("" + actSum);
-        hl[3] = d.name != hl[0]? pForm.parents('.disp').find('li > .show-cat-edit') : d.proj_val != hl[1]? pForm.parents('.disp').find('li > .pval') : pForm.parents('.disp').find('li > .amt');
+        hl[3] = (d.name.toLowerCase() != hl[0].toLowerCase())? pForm.parents('.disp').find('li > .show-cat-edit') : (d.proj_val != hl[1])? pForm.parents('.disp').find('li > .pval') : pForm.parents('.disp').find('li > .amt');
         hl[3].addClass('bg-success');
         pForm.parents('.disp').find('li > img').attr('src', emoji(d));
         drawPie();

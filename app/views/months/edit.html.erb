@@ -6,8 +6,8 @@
 <%= form_for @month do |f| %>
   <p><%= f.label :name, "Name: " %><br> <%= f.text_field :name %> </p>
   <p><%= f.label :month_date, "Date: " %> <br> <%= f.date_field :month_date %></p>
-  <p><%= f.label :projected_income, "Projected Month Income: " %> <br> <%= f.number_field :projected_income, disabled: true %></p>
-  <p><%= f.label :projected_exp, "Projected Month Expense: " %> <br> <%= f.number_field :projected_exp, disabled: true %></p>
+  <p><%= f.label :projected_income, "Projected Income (total):", class: "text-muted" %> <br> <%= f.number_field :projected_income, disabled: true, class: "text-muted bg-info" %></p>
+  <p><%= f.label :projected_exp, "Projected Expense (total):", class: "text-muted" %> <br> <%= f.number_field :projected_exp, disabled: true, class: "text-muted bg-info" %></p>
   <%= f.submit "Update", class: "btn btn-primary" %>
 
 <% end %>

@@ -2,17 +2,16 @@
 <h1><%= @user.first_name %>'s Budget <small><%= link_to "Edit", edit_budget_path(@budget) %></small></h1>
 
 <% if @budget.desc && @budget.desc.length > 0 %>
-      <h4>Description:</h4>
-      <p><%= @budget.desc %></p>
+      
+      <p style="font-family:Dancing Script', cursive;"><span style="font-size: 1.25rem;">Description: </span><%= @budget.desc %></p>
     <% end %>
-      <p>Below are all the months in <%= @budget.name %>. Feel free to check out the different chart options  below the graph.</p>
+      <p>Below are all the months in <%= @budget.name %>. Chart options  are below the graph.</p>
 
 <div class="row">
   <div class="col-sm-6">
     <% @months.each do |month| %>
       
-      <h3><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> 
-      <small><%= link_to "Edit", edit_month_path(month) %></small></h3>
+      <h4><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %></h4>
       <p>Projected Net: <span>$<%= month.projected_income - month.projected_exp %></span> Actual Net: <span>$<%= month.actual_income - month.actual_exp %> </span>
       </p> <hr>
     <% end %>
