@@ -17,17 +17,10 @@ $(document).ready(function(){
     });
   }
 
-  $('.btn-block').on('click', function(e){
-    var btext = $(this).text(),
+  $('#chart-sel').on('change', function(e){
+    var btext = $(this).find('option:selected').text(),
     btitle = "", plotData = [];
-
-    if (btext === $('.btn-success').text()){
-      return;
-    }
-
-    $('.btn-success').attr('class','btn btn-default btn-block');
-    $(this).attr('class', "btn btn-success btn-block");
-
+    
     if(btext === 'Actual Income Vs Actual Expense'){
       btitle = 'Actual Income Vs Actual Expense';
       plotData = [
@@ -100,5 +93,13 @@ $(document).ready(function(){
 
   //   return month_string;
   //   }
+
+  //when using buttons for chart
+    // if (btext === $('.btn-success').text()){
+    //   return;
+    // }
+
+    // $('.btn-success').attr('class','btn btn-default btn-block');
+    // $(this).attr('class', "btn btn-success btn-block");
   
 });

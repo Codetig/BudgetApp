@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path %></small></small></h1>
+<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %></small></small></h1>
 
 <div class="addcat">
   <div class="catform">
@@ -21,9 +21,9 @@
     <% end %>
   </div>
 </div>
-<p><a href="#" class="cat-add-link">Add New Category</a></p>
+<p><a href="#" class="cat-add-link", title="Add a new expense or income category">Add New Category</a></p>
 <% if @income.any? %>
-<h3>Income</h3><br>
+<h3 title="Income categories below">Income</h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -36,9 +36,9 @@
 
     <div class="disp">
     <!-- how to correctly ref images <img src="/assets/sad.png" alt="sad"> -->
-    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:green" href="#"><%= cat.name.capitalize %></a> -
+    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:green" href="#" title="Income catogory name: click me to see my details. Changes save automatically"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this income category. Changes save automatically"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
     
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
@@ -57,15 +57,15 @@
       <div class="actuals">
         <div class="input-group">
         <div class="input-group-addon">1 - $</div>
-        <%= f.number_field :period1, class: "form-control" %>
+        <%= f.number_field :period1, class: "form-control", title: "For actual income of period1 (~week1) of this month for this category" %>
         <div class="input-group-addon">3 - $</div>
-        <%= f.number_field :period3, class: "form-control" %>
+        <%= f.number_field :period3, class: "form-control", title: "For actual income of period3 (~week3) of this month for this category" %>
         </div>
         <div class="input-group">
         <div class="input-group-addon">2 - $</div>
-        <%= f.number_field :period2, class: "form-control" %>
+        <%= f.number_field :period2, class: "form-control", title: "For actual income of period2 (~week2) of this month for this category" %>
         <div class="input-group-addon">4 - $</div>
-        <%= f.number_field :period4, class: "form-control" %>
+        <%= f.number_field :period4, class: "form-control", title: "For actual income of period4 (~week4) of this month for this category" %>
         </div>
         <p><a href='#' class="btn btn-primary dummy">Save</a></p>
       </div>
@@ -86,7 +86,7 @@
   <hr>
 
 <% if @expenses.any? %>
-<h3>Expenses </h3><br>
+<h3 title="Expense categories below">Expenses </h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -99,9 +99,9 @@
     <%emoji = "sad.png" if emo_val < 0 %>
 
     <div class="disp">
-    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:red" href="#"><%= cat.name.capitalize %></a> -
+    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:red" href="#" title="Expense catogory name: click me to see my details. Changes save automatically."><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this expense category. Changes save automatically."><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
       <div class="form-group form-inline">
@@ -119,15 +119,15 @@
         <div class="actuals">
           <div class="input-group">
           <div class="input-group-addon">1 - $</div>
-          <%= f.number_field :period1, class: "form-control" %>
+          <%= f.number_field :period1, class: "form-control", title: "For actual expense of period1 (~week1) of this month for this category" %>
           <div class="input-group-addon">3 - $</div>
-          <%= f.number_field :period3, class: "form-control" %>
+          <%= f.number_field :period3, class: "form-control", title: "For actual expense of period3 (~week3) of this month for this category"  %>
           </div>
           <div class="input-group">
           <div class="input-group-addon">2 - $</div>
-          <%= f.number_field :period2, class: "form-control" %>
+          <%= f.number_field :period2, class: "form-control", title: "For actual expense of period2 (~week2) of this month for this category" %>
           <div class="input-group-addon">4 - $</div>
-          <%= f.number_field :period4, class: "form-control" %>
+          <%= f.number_field :period4, class: "form-control", title: "For actual expense of period4 (~week4) of this month for this category"  %>
           </div>
           <p><a href='#' class="btn btn-primary dummy">Save</a></p>
         </div>
@@ -146,5 +146,7 @@
 </div>
 <% end %>
 <hr>
-
+<script>
+  $('.nmonth').toggleClass('active');
+</script>
 </div>

@@ -34,7 +34,7 @@ html {
 body {
   font-family: 'Muli',sans-serif;
   line-height: 1.688;
-  width: 50rem;
+  /*width: 50rem;*/
   margin: 0 auto;
 }
 
@@ -48,14 +48,19 @@ header {
 }
 
 footer {
+  color: white;
   width: 100%;
-  height: 0.5rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  z-index: 100;
+  height: 8rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  /*border-top: 0.1rem solid black;*/
+  /*z-index: 100;*/
 }
 
 .after-nav {
+  width: 50rem;
+  /*height: 40rem;*/
 }
 
 .argent{
@@ -74,9 +79,18 @@ footer {
 }
 
 .jumbotron {
-  height: 30rem; 
+  margin: 0 auto;
   background-size: cover; 
   background-image: url('/assets/piggy.png');
+  /*width: 50rem;*/
+  background-attachment: fixed;
+  min-height: 33rem;
+  margin-bottom: 1rem;
+}
+
+.container, .after-navh {
+  margin: 0 auto;
+  padding: 0;
 }
 
 #intro {
@@ -94,6 +108,8 @@ footer {
 }
 
 .signup {
+  width: 55rem;
+  margin: 0 auto;
   background-color: rgba(250,200,200, 0.3);
 }
 
@@ -106,8 +122,9 @@ footer {
 }
 
 .login {
+  /*margin-left: 16.4rem;*/
   background-image: url('/assets/purse.png');
-  height: 100%;
+  height: 32rem;
 }
 
 .picdiv{
@@ -116,8 +133,8 @@ footer {
 }
 
 .coins {
-  width: 30rem;
-  height: 35rem;
+  width: 28rem;
+  height: 32rem;
   float: right;
 }
 

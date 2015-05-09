@@ -16,6 +16,20 @@
 
 $(document).ready(function(){
 
+  $('.help').tooltip();
   $('.alert').fadeOut(5000);
+
+  $('.help').click(function(e){
+    e.preventDefault();
+    if($(this).text() === "Help"){
+      $(this).text('Tooltips Off');
+      $(document).tooltip();
+    } else {
+      // location.reload();
+      $(this).text('Help');
+      $(document).tooltip('destroy');
+      $('.help').tooltip();
+    }
+  });
 
 });
