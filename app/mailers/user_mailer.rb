@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def hello_user(user)
     @user = user
     # @url = 'http://localhost:3000'
-    mail(to: @user.email, subject: "Sample Email") unless @user.email =~ /(.*)(test.com)/
+    mail(to: @user.email, subject: "Welcome Email") unless @user.email =~ /(.*)(test.com)/
   end
 
   def update_actuals
