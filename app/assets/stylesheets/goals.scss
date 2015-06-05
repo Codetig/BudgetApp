@@ -1,0 +1,53 @@
+// Place all the styles related to the goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.goal-bar {
+  height: 1.76rem;
+  width: 480px;
+  border: 1px solid black;
+  padding: 0;
+  
+  border-radius: 0.5rem;
+  margin: 0;
+}
+
+.in-bar {
+  margin: 0;
+  background-color: rgba(124,252,0,0.5);
+  background-image: url('/assets/happy.png');
+  background-repeat: repeat-x;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.in-bar2 {
+  @extend .in-bar;
+  width: 100%;
+  background-image: url('/assets/sad.png');
+  background-color: rgba(255,51,51,0.5);
+}
+
+.days-rem {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 5rem;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2rem;
+  background-color: rgba(135,206,250,0.95);
+}
+
+#accordion {
+  width: 35rem;
+}
+
+.goal-edit {
+  display: none;
+}
+
+
+
+
+
+

@@ -4,6 +4,8 @@ class Month < ActiveRecord::Base
 
   belongs_to :budget
   has_many :categories
+  has_many :plans
+  has_many :goals, through: :plans
 
   #method to set name to the name of the month if name is not provided
 
@@ -37,9 +39,7 @@ class Month < ActiveRecord::Base
 
   def month_exists?
     return false unless self.month_date
-    mon_yr = [self.month_date.year, self.month_date.month]
-    months = Month.where(budget_id: self.budget_id)
-    months.any? { |month| month.month_date.year == mon_yr[0] && month.month_date.month == mon_yr[1]  }
+    !Month.where(budget_id: self.budget_id, month_date: self.month_date).empty?
   end
 
   def self.make_current_month budget_id

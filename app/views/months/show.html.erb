@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %></small></small></h1>
+<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %> | <%= link_to "delete", month_path, method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{@month.name}'?"} %></small></small></h1>
 
 <div class="addcat">
   <div class="catform">

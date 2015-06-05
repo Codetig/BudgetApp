@@ -4,7 +4,9 @@ $(document).ready(function(){
   
   //category addition section behavior
     // show
-  $(".cat-add-link").on('click', function(e){
+  $(".cat-add-link, .goal-add-link").on('click', function(e){
+
+    if ($(this).attr('class') === "cat-add-link") {
     // console.log("in the listener");
     $(".addcat").show();
     $('.periods').hide();
@@ -13,6 +15,11 @@ $(document).ready(function(){
     var expBool = $(this).parents('h3').text() === "Income "? false : true;
     $('#category_expense').attr('checked', expBool);
     // console.log($('#category_expense').attr('checked'));
+    } else {
+      // console.log($(this).attr('class'));
+      e.preventDefault();
+      $(".addgoal").show();
+    }
   });
 
    $('.show-cat-edit').on('click', function(e){
@@ -32,6 +39,7 @@ $(document).ready(function(){
   $('.close-add').on('click', function(e){
     e.preventDefault();
     $(".addcat").hide();
+    $(".addgoal").hide();
   });
   
 

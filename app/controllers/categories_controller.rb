@@ -22,7 +22,12 @@ class CategoriesController < ApplicationController
 
   def update
     category = Category.find(params[:id])
+    goal_str = 'Goal ' if category.goal
     if category.update_attributes category_params
+      if goal_str && !category.name.include?('Goal')
+        category.name.prepend(goal_str)
+        # category.save
+      end
       category.month.save
       respond_to do |format|
         format.html {}
@@ -41,6 +46,11 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
+    if category.goal
+      redirect_to :back, notice: "Delete Failed: Goal generated categoriess can only be deleted by deleting the goal that generated them."
+      return
+    end
+
     category.destroy
     redirect_to category.month, notice: "#{category.name} deleted"
   end

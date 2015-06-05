@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'sites#home'
 
   devise_for :users
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     # get '/profile', on: :member, to: 'users#show'
     resources :budgets, only: [:show, :edit, :update] do
+      #making the goals appear on one page with new in a modal and edit in dropdown
+      resources :goals, only: [:index, :new, :create, :show, :edit, :update, :destroy]
       resources :months, only: [:new, :create, :show, :edit, :update, :destroy] do
         resources :categories, only: [:create, :update, :destroy]
       end
@@ -23,7 +26,31 @@ end
 
  Prefix Verb   URI Pattern                              Controller#Action
                     root GET    /                                        sites#home
-              sites_home GET    /sites/home(.:format)                    sites#home
+        new_user_session GET    /users/sign_in(.:format)                 devise/sessions#new
+            user_session POST   /users/sign_in(.:format)                 devise/sessions#create
+    destroy_user_session DELETE /users/sign_out(.:format)                devise/sessions#destroy
+           user_password POST   /users/password(.:format)                devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)            devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format)           devise/passwords#edit
+                         PATCH  /users/password(.:format)                devise/passwords#update
+                         PUT    /users/password(.:format)                devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)                  devise/registrations#cancel
+       user_registration POST   /users(.:format)                         devise/registrations#create
+   new_user_registration GET    /users/sign_up(.:format)                 devise/registrations#new
+  edit_user_registration GET    /users/edit(.:format)                    devise/registrations#edit
+                         PATCH  /users(.:format)                         devise/registrations#update
+                         PUT    /users(.:format)                         devise/registrations#update
+                         DELETE /users(.:format)                         devise/registrations#destroy
+              sites_home GET    /sites/home(.:format)                    sites#signout
+             budgetchart GET    /budgets/:id/barchart(.:format)          budgets#bar_chart
+              monthchart GET    /months/:id/piechart(.:format)           months#pie_chart
+            budget_goals POST   /budgets/:budget_id/goals(.:format)      goals#create
+         new_budget_goal GET    /budgets/:budget_id/goals/new(.:format)  goals#new
+               edit_goal GET    /goals/:id/edit(.:format)                goals#edit
+                    goal GET    /goals/:id(.:format)                     goals#show
+                         PATCH  /goals/:id(.:format)                     goals#update
+                         PUT    /goals/:id(.:format)                     goals#update
+                         DELETE /goals/:id(.:format)                     goals#destroy
         month_categories POST   /months/:month_id/categories(.:format)   categories#create
                 category PATCH  /categories/:id(.:format)                categories#update
                          PUT    /categories/:id(.:format)                categories#update
@@ -44,22 +71,6 @@ end
                          PATCH  /users/:id(.:format)                     users#update
                          PUT    /users/:id(.:format)                     users#update
                          DELETE /users/:id(.:format)                     users#destroy
-        new_user_session GET    /users/sign_in(.:format)                 devise/sessions#new
-            user_session POST   /users/sign_in(.:format)                 devise/sessions#create
-    destroy_user_session DELETE /users/sign_out(.:format)                devise/sessions#destroy
-           user_password POST   /users/password(.:format)                devise/passwords#create
-       new_user_password GET    /users/password/new(.:format)            devise/passwords#new
-      edit_user_password GET    /users/password/edit(.:format)           devise/passwords#edit
-                         PATCH  /users/password(.:format)                devise/passwords#update
-                         PUT    /users/password(.:format)                devise/passwords#update
-cancel_user_registration GET    /users/cancel(.:format)                  devise/registrations#cancel
-       user_registration POST   /users(.:format)                         devise/registrations#create
-   new_user_registration GET    /users/sign_up(.:format)                 devise/registrations#new
-  edit_user_registration GET    /users/edit(.:format)                    devise/registrations#edit
-                         PATCH  /users(.:format)                         devise/registrations#update
-                         PUT    /users(.:format)                         devise/registrations#update
-                         DELETE /users(.:format)                         devise/registrations#destroy
-
 
 =end
   # The priority is based upon order of creation: first created -> highest priority.

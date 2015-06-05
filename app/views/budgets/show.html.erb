@@ -13,7 +13,9 @@
       
       <h4 title="The name you have given to this month followed by the actual calendar-month name"><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %></h4>
       <p>Projected Net: <span title="Projected Income - Projected Expense for this particular month. Click on month name to update">$<%= month.projected_income - month.projected_exp %></span> Actual Net: <span title="Actual Income - Actual Expense for this particular month. Click on month name to update">$<%= month.actual_income - month.actual_exp %> </span>
-      </p> <hr>
+      </p> 
+      <p><%= link_to "Delete", month_path(month), method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{month.name}'?"} %></p>
+      <hr>
     <% end %>
 
 <%= link_to "Add Month", new_budget_month_path(@budget), title: "Click to add a new month to your budget" %>

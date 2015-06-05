@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330001433) do
+ActiveRecord::Schema.define(version: 20150529170735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 20150330001433) do
     t.integer  "month_id"
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "category"
+    t.string   "operator"
+    t.boolean  "is_expense"
+    t.float    "target_value"
+    t.integer  "budget_id"
+    t.boolean  "achieved",     default: false
+    t.boolean  "reported",     default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "months", force: :cascade do |t|
     t.string   "name"
     t.date     "month_date"
@@ -49,6 +64,17 @@ ActiveRecord::Schema.define(version: 20150330001433) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.integer  "budget_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.integer  "goal_id"
+    t.integer  "month_id"
+    t.integer  "category_id"
+    t.integer  "m_value"
+    t.boolean  "successful",  default: false
+    t.boolean  "reported",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "users", force: :cascade do |t|

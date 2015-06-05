@@ -1,0 +1,49 @@
+
+<div class="after-nav container">
+  <h1 class="page-header"><%= @goal.name %> - Goal <small><%= "#{@goal.start_date} - #{@goal.end_date}" %> <small> <%= link_to "edit", "#", class: "t-goal-edit" %> | <%= link_to "delete", @goal, method: :delete, data: {confirm: "Are you sure you want to delete this goal?"} %></small></small></h1>
+
+  <div class="goal-edit">
+    <%= form_for @goal do |f| %>
+      <%= f.text_field :name %>
+      <%= f.text_field :category %>
+      <%= f.number_field :target_value %>
+      <%= f.month_field :end_date %>
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div>
+  <h3>
+    <span class="label label-info">Days to go <span class="badge"><%= (@goal.end_date - Date.today).to_i %></span></span>
+    <span class="label label-info">Target Value <span class="badge"><%= number_to_currency(@goal.target_value) %></span></span>
+    <span class="label label-info"> <%= @goal.is_expense ? "Current Total Expense" : "Current Total Income" %> <span class="badge"><%= number_to_currency(@total) %></span></span>
+    </h3>
+  </div>
+
+  <div class="goal-bar"><div 
+  <% if @goal.is_expense %>
+    <% if @total < @goal.target_value %>
+    class="in-bar" 
+      style="width:<%= (@total / @goal.target_value) *100 %>%"
+    <% else %>
+    class = "in-bar2" 
+    <% end %>
+  <% else %>
+    class="in-bar" 
+    style="width:<%= (@total > @goal.target_value ? 100 : @total / @goal.target_value) * 100 %>%"
+  <% end %>
+  ></div></div> <br>
+
+  <div class="goal-cats">
+    <div id="accordion">
+      <% @cats.each do |cat| %>
+      <h4><%= "#{cat.month.month_date.strftime('%B')} - #{cat.name}" %></h4>
+      <div>
+        <p><%= link_to "View Month", cat.month %></p>
+        <div class="goal-bar"><div class="<%= (cat.actuals > cat.proj_val && @goal.is_expense) ? 'in-bar2' : 'in-bar' %>" style="width:<%= cat.actuals > cat.proj_val ? 100 : (cat.actuals/cat.proj_val) * 100 %>%"></div></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

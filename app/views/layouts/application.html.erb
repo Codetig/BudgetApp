@@ -42,6 +42,7 @@
     <ul class="nav navbar-nav">
       <li><%= link_to "Profile", user_path(current_user), class: "nprofile", title: "Link to your user details" %></li>
       <li><%= link_to "Months", budget_path(current_user.budget), class: "nmonth", title: "Link to the list of months in your budget" %></li>
+      <li><%= link_to "Goals", budget_goals_path(current_user.budget), class: "goals", title: "Link to the goals page" %></li>
       <li><%= link_to "Help", root_path, class: "help", title: "Toggles tooltips on or off" %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

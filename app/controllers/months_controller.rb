@@ -6,8 +6,8 @@ class MonthsController < ApplicationController
   end
 
   def show
+    Category.make_defaults(@month) if @month.categories.empty?
     @categories = @month.categories.order(:id)
-    Category.make_defaults(@month) if @categories.empty?
     @expenses = []
     @income = []
     @categories.each do |cat|
@@ -75,6 +75,15 @@ class MonthsController < ApplicationController
   end
 
   def destroy
+    category_with_goals = []
+    @month.categories.each do |cat|
+      category_with_goals << cat if cat.goal
+    end
+    unless category_with_goals.empty?
+      redirect_to :back, notice: "Delete failed: This month contains a goal generated categories"
+      return
+    end
+
     @month.destroy
     redirect_to @month.budget, notice: "#{@month.name} has been deleted"
   end
