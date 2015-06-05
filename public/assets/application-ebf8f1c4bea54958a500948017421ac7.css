@@ -1,0 +1,251 @@
+/* line 6, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/budgets.scss */
+#mon-bar, #monSeriesE {
+  width: 20rem;
+  height: 16rem;
+}
+
+/* line 15, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/budgets.scss */
+.pval, .amt {
+  font-size: 1rem;
+}
+/* line 5, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.goal-bar {
+  height: 1.76rem;
+  width: 480px;
+  border: 1px solid black;
+  padding: 0;
+  border-radius: 0.5rem;
+  margin: 0;
+}
+
+/* line 15, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.in-bar, .in-bar2 {
+  margin: 0;
+  background-color: rgba(124, 252, 0, 0.5);
+  background-image: url("/assets/happy.png");
+  background-repeat: repeat-x;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+/* line 24, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.in-bar2 {
+  width: 100%;
+  background-image: url("/assets/sad.png");
+  background-color: rgba(255, 51, 51, 0.5);
+}
+
+/* line 31, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.days-rem {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 5rem;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2rem;
+  background-color: rgba(135, 206, 250, 0.95);
+}
+
+/* line 41, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+#accordion {
+  width: 35rem;
+}
+
+/* line 45, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.goal-edit {
+  display: none;
+}
+/* line 9, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/months.scss */
+#i-pie, #e-pie {
+  height: 15rem;
+  width: 15rem;
+}
+
+/* line 14, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/months.scss */
+.disp > li > a {
+  font-size: 0.8rem;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/** {
+  font-family: "Circular",Helvetica,sans-serif;
+}*/
+
+
+/*
+rem base = 16px
+line-height = 27px
+
+google fonts
+font-family: 'Muli', sans-serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'Dancing Script', cursive;
+*/
+
+
+html {
+  font-size: 120%
+}
+body {
+  font-family: 'Muli',sans-serif;
+  line-height: 1.688;
+  /*width: 50rem;*/
+  margin: 0 auto;
+}
+
+header {
+  height: 2rem;
+}
+
+.sitename {
+  font-family: 'Indie Flower', cursive;
+  /*font-size: 3rem;*/
+}
+
+footer {
+  color: white;
+  width: 100%;
+  height: 8rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.7rem;
+  /*border-top: 0.1rem solid black;*/
+  /*z-index: 100;*/
+}
+
+.white-text{
+  color: white;
+}
+
+.after-nav {
+  width: 50rem;
+  /*height: 40rem;*/
+}
+
+.argent{
+  font-size: 1.1rem; 
+}
+
+.close{
+  margin-bottom: 0,
+}
+
+.alert {
+  position: absolute;
+  top: 3rem;
+  left: 44rem;
+  z-index: 100;
+}
+
+.jumbotron {
+  margin: 0 auto;
+  background-size: cover; 
+  background-image: url('/assets/piggy.jpg');
+  /*width: 50rem;*/
+  background-attachment: fixed;
+  min-height: 33rem;
+  margin-bottom: 1rem;
+}
+
+.container, .after-navh {
+  margin: 0 auto;
+  padding: 0;
+}
+
+#intro {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  width: 30rem;
+}
+
+#intro > h2 > a {
+  font-weight: bold;
+}
+
+#intro > p {
+  font-family: 'Dancing Script', cursive;
+}
+
+.signup {
+  width: 55rem;
+  margin: 0 auto;
+  background-color: rgba(250,200,200, 0.3);
+}
+
+.utility-user {
+  width: 100%;
+  height: 30rem;
+  padding-top: 3rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  background-color: rgba(250,200,200, 0.3);
+}
+
+#login-text {
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  width: 20rem;
+  height: 100%;
+  background-color: rgba(255,255,255, 0.7);
+}
+
+.login {
+  /*margin-left: 16.4rem;*/
+  background-image: url('/assets/purse.jpg');
+  height: 32rem;
+}
+
+.picdiv{
+  margin: 0;
+  padding-right: 0;
+}
+
+.coins {
+  width: 28rem;
+  height: 32rem;
+  float: right;
+}
+
+.addcat, .addgoal {
+  background-color: rgba(0,0,0,0.8);
+  position: absolute;
+  top: 2.65rem;
+  left: 0;
+  z-index: 300;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.catform, .goalform{
+  width: 20rem;
+  height: 16rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+/*Budgets in budgets.scss*/
+
+
+
+/*months in months.scss*/
+
+
+
+
+
