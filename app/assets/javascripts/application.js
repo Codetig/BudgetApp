@@ -32,6 +32,14 @@ $(document).ready(function(){
     }
   });
 
+  var pInfo;
+  $('body').on('click', '.s-info', function(e){
+    var p = $(this).attr('href').charAt(2);
+    pInfo && pInfo.toggleClass('hidden');
+    pInfo = p === "b" ? $('#budget') : p === "w" ? $('#workings') : $('#about');
+    pInfo.toggleClass('hidden');
+  });
+
   $('#accordion').accordion({collapsible: true});
 
 });
