@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log("we are active");
   var fdata; //for form data to be sent to server for update
   
   //category addition section behavior

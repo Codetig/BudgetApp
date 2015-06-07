@@ -4,15 +4,12 @@ class UserMailer < ApplicationMailer
   def hello_user(user)
     @user = user
     # @url = 'http://localhost:3000'
-    mail(to: @user.email, subject: "Welcome Email") unless @user.email =~ /(.*)(test.com)/
+    mail(to: @user.email, subject: "Welcome Email") unless /(.*)(test.com)/ =~ @user.email
   end
 
-  def update_actuals
-    users = User.all
-    users.each do |user|
+  def update_actuals(user)
       @user = user
-      mail(to: @user.email, subject: "Mon! Budget: Add Actual Amount") unless @user.email =~ /(.*)(test.com)/
-    end
+      mail(to: @user.email, subject: "Mon! Budget: Add Actual Amount") unless /(.*)(@test.com)/ =~ @user.email
   end
 
 end
