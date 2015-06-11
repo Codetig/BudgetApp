@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     else
       respond_to do |format|
         format.html {}
-        format.json {render :json => category}
+        format.json {render :json => {:errors => category.errors.full_messages}, :status => 406}
       end
       # redirect_to :back, notice: "category update failed, please review form"
     end

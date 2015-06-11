@@ -67,7 +67,6 @@ $(document).ready(function(){
     ''
     ];
     fdata = pForm.serializeArray();
-    console.log($(this).attr('id'));
     var url = pForm.attr('action');
     $('.dummy').removeClass('btn-success');
     $('.dummy').addClass('btn-primary');
@@ -96,7 +95,12 @@ $(document).ready(function(){
         pForm.parents('.disp').find('li > img').attr('src', emoji(d));
         drawPie();
       },
-      error: function(d){alert("value change not allowed, please review your form");}
+      error: function(d){
+        console.log(d);
+        var errorMsg = "Update failed. Please review your form. \n Reason for Error: " + JSON.parse(d.responseText).errors[0];
+        e.target.focus();
+        alert(errorMsg);
+      }
     }); //end of ajax call
   });
 
