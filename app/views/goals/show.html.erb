@@ -1,6 +1,6 @@
 
 <div class="after-nav container">
-  <h1 class="page-header"><%= @goal.name %> - Goal <small><%= "#{@goal.start_date} - #{@goal.end_date}" %> <small> <%= link_to "edit", "#", class: "t-goal-edit" %> | <%= link_to "delete", @goal, method: :delete, data: {confirm: "Are you sure you want to delete this goal?"} %></small></small></h1>
+  <h1 class="page-header" title="This page shows a summary of your progress toward your goal. It shows overall performance and breaks it down into the different months involved; click the name of the month to see."><%= @goal.name %> - Goal <small><%= "#{@goal.start_date} - #{@goal.end_date}" %> <small> <%= link_to "edit", "#", class: "t-goal-edit" %> | <%= link_to "delete", @goal, method: :delete, data: {confirm: "Are you sure you want to delete this goal?"} %></small></small> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
 
   <div class="goal-edit">
     <%= form_for @goal do |f| %>

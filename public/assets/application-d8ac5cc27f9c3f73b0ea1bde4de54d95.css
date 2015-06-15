@@ -136,7 +136,7 @@ header {
 footer {
   color: white;
   width: 100%;
-  height: 6.5rem;
+  height: 5rem;
   padding: 1rem;
   padding-bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
@@ -254,6 +254,17 @@ footer {
   height: 16rem;
   margin: 0 auto;
   margin-top: 5rem;
+}
+
+/*Info icon -hidden*/
+.itips {
+  width: 28px;
+  height: 28px;
+  display: none;
+}
+
+.itips:hover {
+  content: url("info-black.png");
 }
 
 /*Budgets in budgets.scss*/

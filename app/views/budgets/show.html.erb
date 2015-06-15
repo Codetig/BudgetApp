@@ -1,18 +1,21 @@
 <div class="after-nav container">
-<h1><%= @user.first_name %>'s Budget <small><%= link_to "Edit", edit_budget_path(@budget), title: "edit your budget's information" %></small></h1>
+
+<h1 title="This is your Budget's name. You may change it by clicking the 'Edit' link."><%= @user.first_name %>'s Budget <small><%= link_to "Edit", edit_budget_path(@budget), title: "edit your budget's information" %></small> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
 
 <% if @budget.desc && @budget.desc.length > 0 %>
       
       <p title="Budget description. Click 'Edit' to change it"><span style="font-size: 1.25rem;">Description: </span><%= @budget.desc %></p>
     <% end %>
-      <p>Below are all the months in <%= @budget.name %>. Chart options  are below the graph.</p>
+      <p>Below are all the months in <%= @budget.name %>. Different charts can be selected above the graph.</p>
 
 <div class="row">
   <div class="col-sm-6">
+    <p>You may add a new month <%= link_to "here", new_budget_month_path(@budget), title: "Click to add a new month to your budget" %>.</p>
     <% @months.each do |month| %>
       
-      <h4 title="The name you have given to this month followed by the actual calendar-month name"><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %></h4>
-      <p>Projected Net: <span title="Projected Income - Projected Expense for this particular month. Click on month name to update">$<%= month.projected_income - month.projected_exp %></span> Actual Net: <span title="Actual Income - Actual Expense for this particular month. Click on month name to update">$<%= month.actual_income - month.actual_exp %> </span>
+      <h4 title="The name you have given to this month followed by the actual calendar-month name"><%= link_to month.name, month %>: <%= month.month_date.strftime("%B") %> | <%= month.month_date.year %> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h4>
+      <p title="Information about this month like the name you gave it and net projected and actual values. Click on the name to see more details.">Projected Net: <span title="Projected Income - Projected Expense for this particular month. Click on month name to update">$<%= month.projected_income - month.projected_exp %></span> Actual Net: <span title="Actual Income - Actual Expense for this particular month. Click on month name to update">$<%= month.actual_income - month.actual_exp %> </span> 
+      <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a>
       </p> 
       <p><%= link_to "Delete", month_path(month), method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{month.name}'?"} %></p>
       <hr>
@@ -21,7 +24,7 @@
 <%= link_to "Add Month", new_budget_month_path(@budget), title: "Click to add a new month to your budget" %>
   </div>
   <div class="col-sm-offset-1 col-sm-5 container-fluid">
-      <div id="chart-selector">
+      <div id="chart-selector" title="This sections displays different charts that show how your budget is doing over the months in your budget. You may select a chart of your choice from the list.">
         <label for="chart-sel">Select Chart: </label>
         <select name="chart-sel" id="chart-sel" title="Choose a desired graph to be displayed below">
           <option selected="selected">Actual Income Vs Actual Expense</option>
@@ -29,6 +32,7 @@
           <option>Projected Income Vs Actual Income</option>
           <option>Projected Expense Vs Actual Expense</option>
     </select>
+    <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a>
     </div>
     <h4 class="chart-title text-center"></h4> <br>
 

@@ -17,12 +17,12 @@
   </div>
 </div>
 
-  <h1><%= current_user.first_name %>'s Goals</h1>
+  <h1 title="Here is a list of all your goals. Clicking on the names show you more detail about each goal."><%= current_user.first_name %>'s Goals <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
 
   <% if !@goals %>
     <p>Your budget currently has no goals. Add a goal <%= link_to "here.", "#", class: "goal-add-link" %></p>
   <% else %>
-    <p>Below is a list of your goals. Please click a goal to see its details or edit it.</p>
+    <p>Below is a list of your goals. Please click the name of a goal to see its details or edit it. You may add a new goal <%= link_to "here", "#", class: "goal-add-link" %></p>
     <ul>
       <% @goals.each do |goal| %>
       <li>

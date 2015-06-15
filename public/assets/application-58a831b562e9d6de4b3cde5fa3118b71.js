@@ -11140,23 +11140,9 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-
-  $('.help').tooltip();
   $('.alert').fadeOut(5000);
 
-  $('.help').click(function(e){
-    e.preventDefault();
-    if($(this).text() === "Help"){
-      $(this).text('Tooltips Off');
-      $(document).tooltip();
-    } else {
-      // location.reload();
-      $(this).text('Help');
-      $(document).tooltip('destroy');
-      $('.help').tooltip();
-    }
-  });
-
+  //Writeups on the home page
   var pInfo;
   $('body').on('click', '.s-info', function(e){
     var p = $(this).attr('href').charAt(2);
@@ -11165,6 +11151,58 @@ $(document).ready(function(){
     pInfo.toggleClass('hidden');
   });
 
+
+  //Help link for information on elements
+  
+  var setDBox = function(el){
+    $('.ui-dialog').remove();
+    $('#dialog-box').remove();
+
+    $('.after-nav').prepend('<div id="dialog-box", title="Info"><p></p></div>');
+    
+    if(el){
+      $('#dialog-box p').text(el.attr("title"));
+      $('#dialog-box').dialog();
+      //activating tooltips again.
+      //Need to see how users react to so many tooltips and fine tune???
+      $(document).tooltip();
+    } else {
+      $('#dialog-box').remove();
+    } 
+    return;
+  };
+
+  $('.help').tooltip();
+  
+
+  $('.help').click(function(e){
+    e.preventDefault();
+    if($(this).text() === "Help"){
+      $(this).text('Tooltips Off');
+      $('.itips').toggle();
+      $(document).tooltip();
+    } else {
+      // location.reload();
+      $(this).text('Help');
+      $(document).tooltip('destroy');
+      $('.itips').toggle();
+      setDBox();
+      $('.help').tooltip();
+    }
+  });
+
+    //dialog information boxes
+  $('body').on('click', '.itips', function(e){
+    e.preventDefault();
+    //tooltips does not work with dialog widget because I'm using the title attribute for both.
+    $(document).tooltip('destroy'); 
+    setDBox($(e.target).parent().parent());
+  });
+
+
+
   $('#accordion').accordion({collapsible: true});
+
+  // $('.itips').dialog();
 
 });

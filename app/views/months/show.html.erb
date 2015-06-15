@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %> | <%= link_to "delete", month_path, method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{@month.name}'?"} %></small></small></h1>
+<h1 title="This page shows details of your month broken down into Income and Expenses. You may have as many categories as you need under both. If you have a goal it will have a category on this page."><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %> | <%= link_to "delete", month_path, method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{@month.name}'?"} %></small></small> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
 
 <div class="addcat">
   <div class="catform">
@@ -23,7 +23,7 @@
 </div>
 <p><a href="#" class="cat-add-link", title="Add a new expense or income category">Add New Category</a></p>
 <% if @income.any? %>
-<h3 title="Income categories below">Income</h3><br>
+<h3 title="Income categories below">Income <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -36,9 +36,10 @@
 
     <div class="disp">
     <!-- how to correctly ref images <img src="/assets/sad.png" alt="sad"> -->
-    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:green" href="#" title="Income catogory name: click me to see my details. Changes save automatically"><%= cat.name.capitalize %></a> -
+    <li title="Click on the name to see details about this category. The changes you make are automatically saved and the faces change accordingly."><%= image_tag emoji %> <a class="show-cat-edit" style="color:green" href="#" title="Income catogory name: click me to see my details. Changes save automatically"><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this income category. Changes save automatically"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this income category. Changes save automatically"><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a> 
+        <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></li>
     
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
@@ -53,7 +54,7 @@
       <div class="input-group-addon">$</div>
       <%= f.number_field :proj_val, class: "form-control" %><br>
       </div>
-      <h5>Actual income for periods (week):</h5>
+      <h5 title="The fields below are for adding the actual values of your income for this category on about a weekly basis. Don't worry, your budget sends you emails to remind you to add these.">Actual income for periods (week): <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h5>
       <div class="actuals">
         <div class="input-group">
         <div class="input-group-addon">1 - $</div>
@@ -78,7 +79,7 @@
   </ul>
   </div>
   <div class="col-sm-4">
-  <h4>Projected Income Categories</h4>
+  <h4 title="The Pie Chart below shows the proportions of your projected income by category, for this month.">Projected Income Categories <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h4>
     <div id="i-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>
 </div>
@@ -86,7 +87,7 @@
   <hr>
 
 <% if @expenses.any? %>
-<h3 title="Expense categories below">Expenses </h3><br>
+<h3 title="Expense categories below">Expenses <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h3><br>
 
 <div class="row">
   <div class="col-sm-8">
@@ -99,9 +100,9 @@
     <%emoji = "sad.png" if emo_val < 0 %>
 
     <div class="disp">
-    <li><%= image_tag emoji %> <a class="show-cat-edit" style="color:red" href="#" title="Expense catogory name: click me to see my details. Changes save automatically."><%= cat.name.capitalize %></a> -
+    <li title="Click on the name to see details about this category. The changes you make are automatically saved and the faces change accordingly."><%= image_tag emoji %> <a class="show-cat-edit" style="color:red" href="#" title="Expense catogory name: click me to see my details. Changes save automatically."><%= cat.name.capitalize %></a> -
         Projected: $<span class ="pval"><%= cat.proj_val %></span> | 
-        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this expense category. Changes save automatically."><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a></li>
+        Actual: $<span class='amt'><%= cat.period1 + cat.period2 + cat.period3 + cat.period4 %></span> <a href="#" title="click me to see the details for this expense category. Changes save automatically."><span class="glyphicon glyphicon-plus show-cat-edit" aria-hidden="true"></span></a> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></li>
     <div class="cat-edit-form hidden">
     <%= form_for cat do |f| %>
       <div class="form-group form-inline">
@@ -115,7 +116,7 @@
         <div class="input-group-addon">$</div>
         <%= f.number_field :proj_val, class: "form-control" %><br>
         </div>
-        <h5>Actual expenses for periods (week):</h5>
+        <h5 title="The fields below are for adding the actual values of your expenses for this category on about a weekly basis. Don't worry, your budget sends you emails to remind you to add these.">Actual expenses for periods (week): <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h5>
         <div class="actuals">
           <div class="input-group">
           <div class="input-group-addon">1 - $</div>
@@ -140,7 +141,7 @@
     </ul>
   </div>
   <div class="col-sm-4">
-  <h4>Projected Expense Categories</h4>
+  <h4 title="The Pie Chart below shows the proportions of your projected expenses by category, for this month.">Projected Expense Categories <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h4>
     <div id="e-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>
 </div>

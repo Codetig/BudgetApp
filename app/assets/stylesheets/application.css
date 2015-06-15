@@ -172,6 +172,17 @@ footer {
   margin-top: 5rem;
 }
 
+/*Info icon -hidden*/
+.itips {
+  width: 28px;
+  height: 28px;
+  display: none;
+}
+
+.itips:hover {
+  content: url("info-black.png");
+}
+
 /*Budgets in budgets.scss*/
 
 
