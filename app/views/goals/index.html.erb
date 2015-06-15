@@ -17,7 +17,7 @@
   </div>
 </div>
 
-  <h1 title="Here is a list of all your goals. Clicking on the names show you more detail about each goal."><%= current_user.first_name %>'s Goals <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
+  <h1><span title="Here is a list of all your goals. Clicking on the names show you more detail about each goal."><%= current_user.first_name %>'s Goals <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></span></h1>
 
   <% if !@goals %>
     <p>Your budget currently has no goals. Add a goal <%= link_to "here.", "#", class: "goal-add-link" %></p>

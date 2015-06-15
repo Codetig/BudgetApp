@@ -1,5 +1,5 @@
 <div class="after-nav container">
-<h1 title="This page shows details of your month broken down into Income and Expenses. You may have as many categories as you need under both. If you have a goal it will have a category on this page."><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %> | <%= link_to "delete", month_path, method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{@month.name}'?"} %></small></small> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h1>
+<h1><span title="This page shows details of your month broken down into Income and Expenses. You may have as many categories as you need under both. If you have a goal it will have a category on this page."><%= @month.name %> <small><%= @month.month_date.strftime("%B") %> - <%= @month.month_date.year %> <small><%= link_to "edit month", edit_month_path, title: "Edit this month's detail" %> | <%= link_to "delete", month_path, method: :delete, data: {confirm: "Are you sure you want to delete this month: '#{@month.name}'?"} %></small></small> <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></span></h1>
 
 <div class="addcat">
   <div class="catform">
