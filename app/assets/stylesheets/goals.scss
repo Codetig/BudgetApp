@@ -35,7 +35,7 @@
   text-align: center;
   border: 1px solid black;
   border-radius: 2rem;
-  background-color: rgba(135,206,250,0.95);
+  background-color: rgba(255,206,250,0.95);
 }
 
 #accordion {
@@ -44,6 +44,11 @@
 
 .goal-edit {
   display: none;
+}
+
+.goal-statistics p {
+  border-bottom: solid black 0.1rem;
+  margin-bottom: 1.5rem;
 }
 
 

@@ -78,7 +78,7 @@
 <% end %>
   </ul>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 right-side">
   <h4 title="The Pie Chart below shows the proportions of your projected income by category, for this month.">Projected Income Categories <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h4>
     <div id="i-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>
@@ -140,7 +140,7 @@
   <% end %>
     </ul>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 right-side">
   <h4 title="The Pie Chart below shows the proportions of your projected expenses by category, for this month.">Projected Expense Categories <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></h4>
     <div id="e-pie" data-url="<%= monthchart_path(@month) %>"></div>
   </div>

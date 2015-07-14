@@ -7,6 +7,7 @@ class BudgetsController < ApplicationController
     Month.make_current_month(@budget.id) if @months.empty?
     # UserMailer.hello_user(@budget.user).deliver_now #works!!!
     # UserMailer.update_actuals.deliver_now #works!!!
+    @goals_ending = @budget.goals_ending
     @months.each do |month|
       month.calc_actuals
       month.calc_projected
@@ -22,7 +23,9 @@ class BudgetsController < ApplicationController
     inca = []
     expp = []
     incp = []
+    months_filter = [Date.today - 365, Date.today + 365]
     months.each do |month|
+      return if month.month_date < months_filter[0] || month.month_date > months_filter[1]
       month.calc_actuals
       month.calc_projected
       expa << [month.month_date.month.to_i, month.actual_exp.to_i]

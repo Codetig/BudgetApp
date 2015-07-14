@@ -36,6 +36,14 @@ class Goal < ActiveRecord::Base
       end
   end
 
+  def expense_goal?
+    self.categories[0].expense
+  end
+
+  def total_actual_value
+    self.categories.reduce(0) {|sum, cat| sum += cat.actuals}
+  end
+
   def make_category date, m_val
     month = Month.new(
         name: date.strftime("%B"),

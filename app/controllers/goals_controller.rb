@@ -3,6 +3,9 @@ class GoalsController < ApplicationController
     @budget = Budget.find params[:budget_id]
     @goals = @budget.goals
     @t = Time.new( Time.now.year, Time.now.month)
+    @earliest = @budget.earliest_goal
+    @goals_inc_progress = "#{(@budget.goals_progress('income') * 100).round(1)}% actual savings toward target."
+    @goals_exp_progress = "#{(@budget.goals_progress('expense') * 100).round(1)} of target expanses spent"
   end
 
   def show

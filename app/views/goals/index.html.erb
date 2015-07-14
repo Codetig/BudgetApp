@@ -22,6 +22,7 @@
   <% if !@goals %>
     <p>Your budget currently has no goals. Add a goal <%= link_to "here.", "#", class: "goal-add-link" %></p>
   <% else %>
+  <div class="col-sm-8">
     <p>Below is a list of your goals. Please click the name of a goal to see its details or edit it. You may add a new goal <%= link_to "here", "#", class: "goal-add-link" %></p>
     <ul>
       <% @goals.each do |goal| %>
@@ -31,7 +32,19 @@
       </li>
       <% end %>
     </ul>
-    <%= link_to "Add New Goal", "#", class: "goal-add-link" %>
-    <p></p>
+
+    <p><%= link_to "Add New Goal", "#", class: "goal-add-link" %></p>
+    </div>
+    <div class="goal-statistics right-side col-sm-4">
+      <h3>Goals Stats</h3> <br>
+      <h4>Number of Goals:</h4>
+      <p><%= @goals.length %> goal<%= 's' if @goals.length > 1 %></p>
+      <h4>Goal with Earliest Deadline:</h4>
+      <p><%= link_to @earliest.name, @earliest %> - <%= @earliest.end_date %></p>
+      <h4>All Income Progress:</h4>
+      <p><%= @goals_inc_progress %></p>
+      <h4>All Expense Progress:</h4>
+      <p style="border:none"><%= @goals_exp_progress %></p> <br>
+    </div>
   <% end %>
 </div>

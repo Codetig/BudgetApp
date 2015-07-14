@@ -43,7 +43,7 @@
   text-align: center;
   border: 1px solid black;
   border-radius: 2rem;
-  background-color: rgba(135, 206, 250, 0.95);
+  background-color: rgba(255, 206, 250, 0.95);
 }
 
 /* line 41, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
@@ -54,6 +54,12 @@
 /* line 45, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
 .goal-edit {
   display: none;
+}
+
+/* line 49, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/goals.scss */
+.goal-statistics p {
+  border-bottom: solid black 0.1rem;
+  margin-bottom: 1.5rem;
 }
 /* line 9, /Users/Beorn/WDI/projects/project3/pv1/budgetapp/app/assets/stylesheets/months.scss */
 #i-pie, #e-pie {
@@ -200,7 +206,7 @@ footer {
 .signup {
   width: 55rem;
   margin: 0 auto;
-  background-color: rgba(250,200,200, 0.3);
+  background-color: rgba(255,255,0, 0.1);
 }
 
 .utility-user {
@@ -267,8 +273,12 @@ footer {
   content: url("info-black.png");
 }
 
-/*Budgets in budgets.scss*/
+.right-side {
+  background-color: rgba(255, 255, 0, 0.2);
+  border-radius: 1rem;
+}
 
+/*Budgets in budgets.scss*/
 
 
 /*months in months.scss*/

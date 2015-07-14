@@ -116,7 +116,7 @@ footer {
 .signup {
   width: 55rem;
   margin: 0 auto;
-  background-color: rgba(250,200,200, 0.3);
+  background-color: rgba(255,255,0, 0.1);
 }
 
 .utility-user {
@@ -183,8 +183,12 @@ footer {
   content: url("info-black.png");
 }
 
-/*Budgets in budgets.scss*/
+.right-side {
+  background-color: rgba(255, 255, 0, 0.2);
+  border-radius: 1rem;
+}
 
+/*Budgets in budgets.scss*/
 
 
 /*months in months.scss*/

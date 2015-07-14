@@ -39,7 +39,7 @@
       <% @cats.each do |cat| %>
       <h4><%= "#{cat.month.month_date.strftime('%B')} - #{cat.name}" %></h4>
       <div>
-        <p><%= link_to "View Month", cat.month %></p>
+        <p>Progress: <%= ((cat.actuals * 100)/cat.proj_val).round(2) %>% of limit <%= @goal.is_expense ? "spent" : "saved" %> :<%= link_to "View Month", cat.month %></p>
         <div class="goal-bar"><div class="<%= (cat.actuals > cat.proj_val && @goal.is_expense) ? 'in-bar2' : 'in-bar' %>" style="width:<%= cat.actuals > cat.proj_val ? 100 : (cat.actuals/cat.proj_val) * 100 %>%"></div></div>
       </div>
       <% end %>
