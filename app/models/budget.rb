@@ -21,7 +21,7 @@ class Budget < ActiveRecord::Base
         sum_actual += goal.total_actual_value
       end
     end
-    (sum_actual/sum_target)
+    sum_target == 0 ? 0 : (sum_actual/sum_target) #0% for when there is no goal matching the type.
   end
 
 #returns an array of goals ending today
