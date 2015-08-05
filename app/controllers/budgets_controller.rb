@@ -5,16 +5,14 @@ class BudgetsController < ApplicationController
   def show
     @months = @budget.months.order(month_date: :desc)
     Month.make_current_month(@budget.id) if @months.empty?
-    # UserMailer.hello_user(@budget.user).deliver_now #works!!!
-    # UserMailer.update_actuals.deliver_now #works!!!
     @goals_ending = @budget.goals_ending
     @months.each do |month|
       month.calc_actuals
       month.calc_projected
-      # @goals = @budget.goals
     end
-    # exist = @months.any? {|m| m.month_date.year == Date.today.year && m.month_date.month == Date.today.month} 
-    # Month.make_current_month(@budget.id) unless exist
+    @goals = @budget.goals
+    
+
   end
 
   def bar_chart

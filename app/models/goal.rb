@@ -6,6 +6,15 @@ class Goal < ActiveRecord::Base
   has_many :months, through: :plans
   has_many :categories, through: :plans
 
+  def time_up?
+    end_date >= Date.today
+  end
+
+  def goal_reached?
+    actual_value = self.categories.reduce(0) {|sum, c| sum += c}
+    is_expense ? target_value >= actual_value : target_value <= actual_value
+  end
+
   def extend_time date
     e0 = self.start_date
     e1 = date
