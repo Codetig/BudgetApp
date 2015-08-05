@@ -19,7 +19,7 @@
 
   <h1><span title="Here is a list of all your goals. Clicking on the names show you more detail about each goal."><%= current_user.first_name %>'s Goals <a href="#"> <%= image_tag "info-grey.png", class: "itips" %></a></span></h1>
 
-  <% if !@goals %>
+  <% if @goals.length < 1 %>
     <p>Your budget currently has no goals. Add a goal <%= link_to "here.", "#", class: "goal-add-link" %></p>
   <% else %>
   <div class="col-sm-8">
@@ -36,6 +36,7 @@
     <p><%= link_to "Add New Goal", "#", class: "goal-add-link" %></p>
     </div>
     <div class="goal-statistics right-side col-sm-4">
+    <% if @goals.length > 0 %>
       <h3>Goals Stats</h3> <br>
       <h4>Number of Goals:</h4>
       <p><%= @goals.length %> goal<%= 's' if @goals.length > 1 %></p>
@@ -45,6 +46,7 @@
       <p><%= @goals_inc_progress %></p>
       <h4>All Expense Progress:</h4>
       <p style="border:none"><%= @goals_exp_progress %></p> <br>
+      <% end %>
     </div>
   <% end %>
 </div>
